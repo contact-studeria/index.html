@@ -1,0 +1,1387 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Focus outils — Guide de tournage</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout : bandeau de navigation collant, un bloc par outil, leçons en cartes numérotées */
+  :root{
+    color-scheme: light;
+    --ink:#171331;
+    --ink-soft:#4A4566;
+    --ink-faint:#7A748F;
+    --ground:#FFFFFF;
+    --surface:#F7F5FC;
+    --line:#E6E1F0;
+    --violet:#6D28D9;
+    --violet-soft:#F3EEFE;
+    --violet-line:#DDD0FA;
+    --navy:#14103A;
+    --stop:#B4243B;
+    --stop-bg:#FDF2F4;
+    --warn:#A15A0B;
+    --warn-bg:#FDF7EC;
+    --go:#1B7A4D;
+    --go-bg:#F0FAF4;
+    --display:"Outfit","Segoe UI",system-ui,sans-serif;
+    --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --ink:#F1EEFB; --ink-soft:#BDB6D4; --ink-faint:#8E87A8;
+      --ground:#100D24; --surface:#191534; --line:#2C2650;
+      --violet:#A886F5; --violet-soft:#1E1842; --violet-line:#382F63;
+      --navy:#0A0820;
+      --stop:#F0899C; --stop-bg:#2A1520;
+      --warn:#E5AC63; --warn-bg:#2A1F12;
+      --go:#6FD3A1; --go-bg:#0F2419;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --ink:#F1EEFB; --ink-soft:#BDB6D4; --ink-faint:#8E87A8;
+    --ground:#100D24; --surface:#191534; --line:#2C2650;
+    --violet:#A886F5; --violet-soft:#1E1842; --violet-line:#382F63;
+    --navy:#0A0820;
+    --stop:#F0899C; --stop-bg:#2A1520;
+    --warn:#E5AC63; --warn-bg:#2A1F12;
+    --go:#6FD3A1; --go-bg:#0F2419;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+  /* ---- hero ---- */
+  .hero{background:var(--navy);color:#fff;padding-block:52px 38px;padding-inline:16px}
+  .in{max-width:860px;margin:0 auto}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#A886F5;margin-bottom:20px}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,6.4vw,48px);line-height:1.04;letter-spacing:-.025em;margin:0;text-wrap:balance;color:#fff}
+  h1 em{font-style:normal;color:#C4AEFB}
+  .lede{margin:18px 0 0;font-size:17px;color:#D9D2F0;max-width:56ch}
+  .facts{display:flex;flex-wrap:wrap;gap:16px 36px;margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14)}
+  .facts div{font-size:15px;color:#EAE5FA;font-variant-numeric:tabular-nums}
+  .facts span{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#8C7FB8;font-weight:600;margin-bottom:5px}
+
+  /* ---- nav collante ---- */
+  .nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--ground);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:860px;margin:0 auto;padding-inline:16px;display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:thin}
+  .nav a{flex:0 0 auto;font-family:var(--display);font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:6px 12px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+  .nav a:hover{color:var(--violet);border-color:var(--violet-line);background:var(--violet-soft)}
+  .nav a:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+  .wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:0 72px}
+
+  /* ---- mode d'emploi ---- */
+  .howto{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:34px}
+  .howto h2{font-family:var(--display);font-size:18px;font-weight:600;margin:0 0 12px}
+  .howto p{margin:0 0 10px;color:var(--ink-soft);font-size:15.5px}
+  .howto p:last-child{margin:0}
+  .howto b{color:var(--ink);font-weight:600}
+
+  /* ---- outil ---- */
+  .tool{margin-top:56px;scroll-margin-top:72px}
+  .tool-head{border-top:3px solid var(--violet);padding-top:18px}
+  .tool-num{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+  .tool h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,5vw,34px);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
+  .tool-sub{margin:8px 0 0;color:var(--ink-soft);max-width:62ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft)}
+  .chip.ok{background:var(--go-bg);border-color:transparent;color:var(--go)}
+  .chip.warn{background:var(--warn-bg);border-color:transparent;color:var(--warn)}
+  .chip.stop{background:var(--stop-bg);border-color:transparent;color:var(--stop)}
+
+  .alert{border-left:3px solid var(--stop);background:var(--stop-bg);border-radius:0 12px 12px 0;padding:13px 18px;margin-top:16px;font-size:15px;color:var(--ink-soft)}
+  .alert b{color:var(--stop)}
+  .alert.warn{border-color:var(--warn);background:var(--warn-bg)}
+  .alert.warn b{color:var(--warn)}
+
+  .filrouge{background:var(--violet-soft);border:1px solid var(--violet-line);border-radius:14px;padding:16px 20px;margin-top:18px}
+  .filrouge h3{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin:0 0 8px}
+  .filrouge p{margin:0;color:var(--ink-soft);font-size:15.5px}
+
+  /* ---- parties ---- */
+  .part{margin-top:30px}
+  .part-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:14px}
+  .part-head em{font-style:normal;font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .part-head h3{font-family:var(--display);font-size:17.5px;font-weight:600;margin:0;color:var(--ink)}
+
+  /* ---- leçon ---- */
+  .lesson{border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:10px;background:var(--ground)}
+  .lesson-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:10px}
+  .lesson-n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--violet-soft);border:1px solid var(--violet-line);color:var(--violet);font-family:var(--display);font-weight:600;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+  .lesson-t{font-family:var(--display);font-size:16.5px;font-weight:600;color:var(--ink);min-width:0;flex:1 1 auto}
+  .dur{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .hook{font-size:15px;color:var(--violet);font-style:italic;margin:0 0 12px;padding-left:36px}
+  dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 16px;align-items:baseline}
+  dt{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+  dd{margin:0;color:var(--ink-soft);min-width:0;font-size:15.5px}
+  dd b{color:var(--ink);font-weight:600}
+  @media (max-width:560px){ dl{grid-template-columns:1fr;gap:3px 0} dd{margin-bottom:11px} dd:last-child{margin-bottom:0} .hook{padding-left:0} }
+  .hc{color:var(--ink-faint)!important}
+  .trap{margin-top:12px;font-size:14.5px;color:var(--ink-soft);background:var(--warn-bg);border-radius:10px;padding:10px 14px}
+  .trap b{color:var(--warn);font-weight:600}
+
+  .plateau{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:0 0 22px}
+  .plateau h4{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin:0 0 12px;font-weight:600}
+  .plateau h5{font-family:var(--display);font-size:14px;margin:16px 0 6px;color:var(--ink)}
+  .plateau h5:first-of-type{margin-top:0}
+  .plateau ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:14.5px}
+  .plateau li{margin-bottom:5px}
+  .plateau p{margin:0 0 10px;color:var(--ink-soft);font-size:14.5px}
+  .plateau b{color:var(--ink);font-weight:600}
+  .plateau a{color:var(--violet);text-decoration:none;border-bottom:1px solid var(--line)}
+  .plateau a:hover{border-bottom-color:var(--violet)}
+  .data{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin:8px 0 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.6;white-space:pre-wrap;color:var(--ink-soft);overflow-x:auto}
+  .mins{display:inline-block;font-size:11.5px;font-weight:600;color:var(--violet);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+
+  .owners{background:var(--navy);color:#EFEBFB;border-radius:16px;padding:24px 22px;margin:30px 0 10px}
+  .owners h2{font-family:var(--display);font-size:20px;color:#fff;margin:0 0 10px}
+  .on{color:#CFC7EA;max-width:66ch;margin:0 0 16px;font-size:15px}
+  .on.last{margin:16px 0 0;font-size:14.5px;color:#A99FD0}
+  .otab{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .owners table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+  .owners th{text-align:left;font-family:var(--display);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9A90C4;font-weight:600;padding:0 14px 8px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+  .owners td{padding:10px 14px 10px 0;border-bottom:1px solid rgba(255,255,255,.08);color:#CFC7EA;vertical-align:top}
+  .owners td b{color:#fff;font-weight:600}
+  .owners .own{color:#C4B5FD;white-space:nowrap;font-weight:600}
+  .owners .how{color:#A99FD0}
+  @media (max-width:560px){ .owners{padding:20px 16px} }
+
+  .close{background:var(--navy);color:#EFEBFB;border-radius:16px;padding:24px;margin-top:56px}
+  .close h2{font-family:var(--display);font-size:20px;color:#fff;margin:0 0 12px}
+  .close p{color:#CFC7EA;max-width:62ch;margin:0 0 10px}
+  .close p:last-child{margin:0}
+  .close b{color:#fff}
+  .note-rev{border-top:1px solid rgba(255,255,255,.18);padding-top:12px;margin-top:16px!important;font-size:14.5px}
+  .sign{margin-top:26px;font-size:13.5px;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:16px}
+</style>
+
+<div class="hero">
+  <div class="in">
+    <div class="eyebrow">Studeria · Parcours Focus outils</div>
+    <h1>Guide de tournage.<br><em>Parcours Focus outils.</em></h1>
+    <p class="lede">Un chapitre par outil. Dans chaque chapitre, les bases d'abord, puis un cas pratique unique qui porte toutes les leçons suivantes — la fonctionnalité ne sort jamais avant que le cas la réclame.</p>
+    <div class="facts">
+      <div><span>Outils</span>8</div>
+      <div><span>Leçons</span>83</div>
+      <div><span>Durée totale</span>10 h 08</div>
+      <div><span>Mis à jour</span>8 octobre 2026</div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Aller à un outil">
+  <div class="nav-in">
+    <a href="#airtable">Airtable</a>
+    <a href="#make">Make</a>
+    <a href="#n8n">n8n</a>
+    <a href="#softr">Softr</a>
+    <a href="#notion">Notion</a>
+    <a href="#perplexity">Perplexity + Comet</a>
+    <a href="#leexi">Leexi</a>
+    <a href="#lovable">Lovable</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="howto">
+    <h2>Comment lire ce guide</h2>
+    <p><b>Chaque leçon tient en cinq lignes.</b> L'accroche est la phrase d'ouverture, celle qui dit à l'apprenant pourquoi il reste. Le contenu est ce qu'on explique. Les ressources sont ce qu'il faut avoir préparé <i>avant</i> d'allumer la caméra. La démo est ce qu'on montre à l'écran. Le hors champ est ce qu'on ne montre pas, et c'est la ligne qui tient la durée.</p>
+    <p><b>« Hors champ » dit ce qu'on n'enseigne pas ici, pas ce qu'on s'interdit de remontrer.</b> Un geste déjà vu réapparaît forcément à l'écran : on rouvre la base à chaque leçon, on renomme des champs, on relit une sortie de module. C'est normal et c'est même ce qui ancre. La règle est seulement qu'on ne le <i>réexplique</i> pas : on le refait en silence, ou en une demi-phrase. Ce qui est listé en hors champ, c'est ce qui n'a pas sa place comme sujet de cette leçon-là, parce que c'est traité ailleurs ou parce que ça sort du périmètre.</p>
+    <p><b>Dire la date de tournage au début de chaque vidéo.</b> Ces outils changent tous les mois. Une vidéo datée reste utilisable même quand une interface bouge ; une vidéo non datée devient invérifiable.</p>
+    <p><b>Le fil rouge est le même partout : le cabinet de l'apprenant.</b> Ses demandes entrantes, ses affaires, ses clients, ses livrables. Il ne regarde pas quelqu'un d'autre travailler — il construit son propre système, outil après outil. À la fin du parcours, il a quelque chose qui tourne chez lui.</p>
+    <p><b>Les chiffres des paliers gratuits sont dans le guide, et ils sont datés.</b> Chaque leçon « Ce que ça coûte vraiment » porte des quotas précis, vérifiés le 8 octobre 2026. Ils ne sont pas là pour être récités de mémoire : ils sont là pour savoir quoi chercher à l'écran et quel calcul poser devant l'apprenant. Rouvrir la page de tarifs le jour du tournage, et annoncer la date.</p>
+    <p><b>Une notion a un seul propriétaire.</b> Elle s'explique dans la leçon qui la porte, et nulle part ailleurs. Quand elle revient, on y renvoie en une phrase : « on a vu ça au chapitre Airtable, je ne reprends pas ». Le tableau ci-dessous dit qui possède quoi. C'est la seule façon de tenir 10 heures sans que l'apprenant ait l'impression de réécouter la même chose.</p>
+    <p><b>Jamais de clé API ni d'identifiant à l'écran.</b> Les préparer hors caméra, et le dire à l'apprenant quand on arrive au moment de la connexion.</p>
+  </div>
+
+
+  <div class="owners">
+    <h2>Qui enseigne quoi</h2>
+    <p class="on">Treize notions reviennent d'un outil à l'autre. Chacune a une leçon propriétaire : c'est la seule où on l'explique. Partout ailleurs, on la nomme et on renvoie.</p>
+    <div class="otab"><table>
+      <thead><tr><th>Notion</th><th>Propriétaire</th><th>Revient dans</th><th>Ce qu'on fait quand elle revient</th></tr></thead>
+      <tbody><tr><td><b>Relier deux objets entre eux</b></td><td class="own">Airtable · leçon 7</td><td>Notion leçon 8, Softr leçon 5</td><td class="how">Notion : « même raisonnement qu'Airtable, dans une autre interface ». Ne pas réexpliquer ce qu'est une relation.</td></tr><tr><td><b>Les vues : filtre, tri, regroupement</b></td><td class="own">Airtable · leçon 9</td><td>Notion leçon 9</td><td class="how">Notion : montrer les trois vues, ne pas réexpliquer à quoi sert une vue.</td></tr><tr><td><b>Les champs calculés</b></td><td class="own">Airtable · leçon 8</td><td>Notion leçon 8</td><td class="how">Le rollup se nomme, il ne se réexplique pas.</td></tr><tr><td><b>Le palier gratuit et ses quotas</b></td><td class="own">Leçon 3 de chaque outil</td><td>—</td><td class="how">Chaque outil a ses chiffres. Aucun renvoi possible, mais format identique partout : chiffres lus à l'écran, jamais de mémoire.</td></tr><tr><td><b>Lire la sortie d'un module avant d'écrire la suite</b></td><td class="own">Make · leçon 5</td><td>n8n leçon 5</td><td class="how">n8n : « le réflexe est le même que chez Make ». Dix secondes, pas une leçon.</td></tr><tr><td><b>Filtrer puis orienter</b></td><td class="own">Make · leçons 7 et 8</td><td>n8n leçon 7</td><td class="how">n8n : on nomme Filter, IF et Switch et on fait le pont. La logique a déjà été posée.</td></tr><tr><td><b>Appeler un modèle d'IA depuis une automatisation</b></td><td class="own">Make · leçon 9</td><td>n8n leçon 8</td><td class="how">n8n : seule la question du modèle hébergé localement est nouvelle. Le reste renvoie à Make.</td></tr><tr><td><b>La sortie structurée plutôt que le paragraphe</b></td><td class="own">Make · leçon 9</td><td>n8n leçon 8, Airtable leçon 11</td><td class="how">Se montre une fois, se rappelle ensuite en une phrase.</td></tr><tr><td><b>Rien ne part sans relecture : le brouillon</b></td><td class="own">Make · leçon 10</td><td>Leexi leçon 6, et toutes les leçons « Limites et checklist »</td><td class="how">La règle s'énonce une fois en entier chez Make. Ailleurs : « comme toujours, en brouillon ».</td></tr><tr><td><b>Jamais de clé ni d'identifiant à l'écran</b></td><td class="own">Make · leçon 6</td><td>n8n leçon 6, Make leçon 9</td><td class="how">Se dit à voix haute à chaque manipulation de clé, mais ne se réexplique jamais.</td></tr><tr><td><b>Qui voit quoi, et ce qui fuit</b></td><td class="own">Airtable · leçon 12</td><td>Softr leçon 7, Notion leçon 11, Lovable leçon 8</td><td class="how">Chaque outil a son mécanisme propre, qui lui est spécifique. C'est le principe qui ne se répète pas.</td></tr><tr><td><b>Les données personnelles et leur conservation</b></td><td class="own">Leexi · leçon 2</td><td>Perplexity leçon 8, toutes les checklists</td><td class="how">Leexi porte le cadre en entier : information, opposition, durée. Ailleurs, on applique sans redérouler.</td></tr><tr><td><b>Ce qu'on écrit dans la note de livraison</b></td><td class="own">Make · leçon 11</td><td>n8n leçon 10, Softr leçon 10, Lovable leçon 10</td><td class="how">Le modèle se construit une fois. Ensuite on dit seulement ce qui change pour cet outil-là.</td></tr></tbody>
+    </table></div>
+    <p class="on last">Le test avant de tourner une leçon : « est-ce que j'explique quelque chose qui appartient à une autre vidéo ? » Si oui, on coupe et on renvoie.</p>
+  </div>
+
+  <!-- ============ AIRTABLE ============ -->
+  <section class="tool" id="airtable">
+    <div class="tool-head">
+      <div class="tool-num">Outil 1 · No-code et automatisation</div>
+      <h2>Airtable</h2>
+      <p class="tool-sub">La base de données qui tient tout le reste. On commence par là parce que Make, Softr et n8n viendront s'y brancher.</p>
+      <div class="chips"><span class="chip">12 leçons · 1 h 29</span></div>
+    </div>
+
+    <div class="alert"><b>À trancher avant de tourner.</b> Airtable a été racheté par Bending Spoons — accord annoncé le 4 août 2026, closing le 4 septembre 2026, 1,285 Md$ de valeur d'entreprise. Le précédent Evernote, racheté par le même groupe, s'est soldé par deux vagues de licenciements en 2023 et une hausse des tarifs. Tourner un cours complet maintenant, c'est accepter de le refaire si la grille change. Décision D2, en attente chez Juliann.</div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>L'apprenant n'a pas de CRM. Ses prospects sont dans sa tête, ses devis dans un dossier, ses clients dans sa boîte mail. On construit la base qui tiendra tout : contacts, affaires, prestations, livrables.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">45 min de préparation</span></h4>
+<h5>Comptes à ouvrir</h5>
+<ul>
+<li>Un compte Airtable gratuit <b>neuf</b>, sur <b>airtable.com</b>. Neuf, parce qu'on filme l'écran de départ réel de l'apprenant.</li>
+<li>Un <b>second compte</b>, avec une autre adresse mail, pour la démonstration de partage de la leçon 12. C'est lui qui jouera l'invité.</li>
+<li>Page à garder ouverte en onglet : <a href="https://airtable.com/pricing">airtable.com/pricing</a>, et la page détaillée <a href="https://support.airtable.com/docs/airtable-plans">support.airtable.com/docs/airtable-plans</a>, qui porte les chiffres du gratuit. Pour la leçon 3.</li>
+</ul>
+<h5>À fabriquer avant</h5>
+<ul>
+<li><b>Le tableur sale</b> de la leçon 1 : 12 colonnes, une cinquantaine de lignes, trois doublons visibles, des statuts écrits de trois façons différentes. Il doit faire mal aux yeux.</li>
+<li><b>La base finie</b>, construite une fois en répétition, gardée en réserve pour les leçons 1 et 9.</li>
+<li>Dans la base de démonstration de la leçon 2 : un champ <b>Marge</b> masqué dans une vue. Il servira au piège de la leçon 12.</li>
+</ul>
+<h5>Ce que le jeu de test doit contenir</h5>
+<p>Les noms et les montants n'ont pas d'importance, Tristan prend ce qu'il veut. Ce qui compte, c'est la forme :</p>
+<ul>
+<li><b>3 contacts</b> et <b>5 affaires</b>, réparties inégalement — un contact doit en avoir plusieurs, sinon la liaison de la leçon 7 ne se voit pas.</li>
+<li>Des <b>montants très écartés</b>, du plus petit au plus gros, pour que le Kanban de la leçon 9 soit lisible.</li>
+<li><b>Une affaire sans date d'échéance</b>, pour montrer ce que devient un champ vide dans la vue Calendrier.</li>
+<li>Des <b>lignes de prestation chiffrées</b> sur au moins deux affaires, sinon le rollup de la leçon 8 n'a rien à additionner.</li>
+<li><b>4 statuts d'affaire</b>, décidés à l'avance et pas plus : c'est la sélection unique de la leçon 6.</li>
+</ul>
+<p style="margin-top:10px"><b>Pour la leçon 6</b>, saisir d'abord le statut en texte libre et taper vraiment le même statut avec trois orthographes différentes, accents compris. C'est ce moment-là qui fait comprendre, pas l'explication.</p>
+</div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — construire sa base</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Le point de départ</span><span class="dur">7 min</span></div>
+        <p class="hook">« Avant de créer la moindre table, on dessine. Sinon on refait tout dans trois semaines. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Lister ce qu'on doit suivre : contacts, affaires, prestations, livrables. Pour chaque objet, poser la question qui tranche : « est-ce que ça existe tout seul ? » Un contact oui, une ligne de devis non.</dd>
+          <dt>Ressources</dt><dd>Feuille et stylo, filmés. Pas d'écran.</dd>
+          <dt>Démo</dt><dd>Dessiner les quatre objets et les flèches entre eux, à la main, face caméra.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'écran d'Airtable. Cette leçon se tourne sur papier, caméra sur la main. Ouvrir l'outil ici fait sauter l'étape que tout le monde saute déjà.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">Créer les tables</span><span class="dur">8 min</span></div>
+        <p class="hook">« On transforme le dessin en base, table par table. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Créer les quatre tables du dessin. Nommer au singulier ou au pluriel, mais choisir et s'y tenir.</dd>
+          <dt>Ressources</dt><dd>Compte gratuit neuf, base vide.</dd>
+          <dt>Démo</dt><dd>Créer Contacts, Affaires, Prestations, Livrables. Supprimer les champs d'exemple d'Airtable.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les champs. On crée quatre tables vides et c'est tout. Remplir les colonnes maintenant, c'est refaire la leçon 6 en moins bien.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">Les types de champs</span><span class="dur">9 min</span></div>
+        <p class="hook">« Un champ texte, c'est la facilité d'aujourd'hui et le nettoyage de dans six mois. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les types qui comptent : sélection unique, date, nombre, case à cocher, pièce jointe. Pourquoi une sélection vaut mieux qu'un texte libre pour un statut.</dd>
+          <dt>Ressources</dt><dd>La liste des statuts d'affaire décidée à l'avance.</dd>
+          <dt>Démo</dt><dd>Créer un statut en texte libre, montrer trois orthographes différentes, puis le convertir en sélection.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les champs de liaison, les formules et les rollups. Ils ont leurs leçons. On s'en tient aux types simples.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Montrer vraiment les trois orthographes. C'est ce moment-là qui fait comprendre, pas l'explication.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Relier les tables</span><span class="dur">9 min</span></div>
+        <p class="hook">« Une affaire appartient à un contact. C'est ça qu'on va dire à Airtable. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Le champ de liaison, le plus important de tous. Un contact, plusieurs affaires. Ce que ça permet : ouvrir un contact et voir tout son historique.</dd>
+          <dt>Ressources</dt><dd>Trois contacts et cinq affaires de test, préparés.</dd>
+          <dt>Démo</dt><dd>Créer la liaison, relier les cinq affaires, puis ouvrir une fiche contact et montrer les affaires apparues.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les rollups et les lookups, qui arrivent en leçon 8. On pose la liaison, on montre ce qu'elle permet, on s'arrête là.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">8</span><span class="lesson-t">Les champs calculés</span><span class="dur">8 min</span></div>
+        <p class="hook">« Le total du devis, tu ne le tapes pas. Tu le fais calculer. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Formule, rollup, lookup. Montrer le cas simple : le montant d'une affaire remonté depuis ses lignes de prestation.</dd>
+          <dt>Ressources</dt><dd>Lignes de prestation chiffrées.</dd>
+          <dt>Démo</dt><dd>Poser un rollup, modifier une ligne, voir le total bouger tout seul.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Le langage de formule en entier. Une formule simple et un rollup suffisent. Pas de tour des cent fonctions disponibles.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">9</span><span class="lesson-t">Les vues qui servent</span><span class="dur">8 min</span></div>
+        <p class="hook">« Même donnée, quatre écrans différents selon ce que tu fais de ta journée. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Grille filtrée, Kanban par statut, Calendrier par échéance. Une vue par usage réel, pas une vue par envie.</dd>
+          <dt>Ressources</dt><dd>La base remplie des leçons précédentes.</dd>
+          <dt>Démo</dt><dd>Créer les trois vues, puis déplacer une carte dans le Kanban et montrer le statut changé dans la grille.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les interfaces et les tableaux de bord. C'est le travail de Softr au chapitre 4, et le dire évite que l'apprenant parte construire un portail dans Airtable.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">10</span><span class="lesson-t">Le formulaire d'entrée</span><span class="dur">7 min</span></div>
+        <p class="hook">« À partir de maintenant, tu ne saisis plus rien toi-même. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Le formulaire qui alimente la table Contacts. Ce qu'on demande, ce qu'on ne demande pas. C'est la porte d'entrée que Make utilisera au chapitre suivant.</dd>
+          <dt>Ressources</dt><dd>Aucune.</dd>
+          <dt>Démo</dt><dd>Créer le formulaire, le remplir depuis un autre onglet, voir la ligne apparaître.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les automatisations déclenchées par le formulaire. C'est Make, au chapitre suivant, et on l'annonce comme tel.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">11</span><span class="lesson-t">L'IA dans la base</span><span class="dur">7 min</span></div>
+        <p class="hook">« Classer trente demandes à la main, ou poser un champ qui le fait à ta place. »</p>
+        <dl>
+          <dt>Contenu</dt><dd><b>Omni</b>, l'assistant intégré, est disponible sur tous les plans, gratuit compris, mais adossé à un quota : <b>500 crédits IA par éditeur et par mois</b> sur le gratuit. Il est donc accessible et vite plafonné, et c'est ce qu'il faut dire. Deux usages qui servent vraiment au cabinet : le <b>champ IA</b> qui remplit une colonne à partir des autres (résumer une demande, en déduire une catégorie, extraire un budget d'un texte libre), et l'assistant qui construit ou modifie la base à la demande. Dire ce que ça consomme, et la règle : l'IA propose une valeur, elle ne décide pas d'un statut commercial.</dd>
+          <dt>Ressources</dt><dd>Dix demandes entrantes en texte libre, déjà dans la table, volontairement mal rédigées.</dd>
+          <dt>Démo</dt><dd>Créer un champ IA qui catégorise les dix demandes, montrer le résultat ligne par ligne, et <b>en montrer une mal classée</b> — puis dire ce qu'on en fait.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La comparaison avec ChatGPT ou Claude. On montre ce que fait Omni dans la base, pas ce que fait l'IA en général.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Ne pas montrer que des réussites. La leçon n'a de valeur que si l'apprenant voit une erreur et apprend à la rattraper.</div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">12</span><span class="lesson-t">Limites et checklist</span><span class="dur">8 min</span></div>
+        <p class="hook">« Ce qu'il faut vérifier avant de mettre les données d'un client là-dedans. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les deux partages qu'il ne faut jamais confondre. <b>Partager une vue</b> crée un lien qui n'expose que les enregistrements et les champs de cette vue : c'est le partage restreint, celui qu'on donne à un client. Avec une réserve qu'il faut montrer : le lien de vue porte un réglage <b>« Afficher tous les champs dans les fiches dépliées »</b> qui, s'il est activé, redonne accès à tous les champs de la table dès qu'on ouvre une fiche. Il se vérifie à chaque partage. <b>Partager la base</b> ou inviter quelqu'un dessus donne accès à <b>toutes les tables, toutes les vues, tous les champs</b> — y compris les colonnes de marge qu'on avait masquées dans une vue. Masquer un champ dans une vue n'est pas une sécurité : c'est un confort d'affichage. Ensuite : les données personnelles et leur durée de conservation, les plafonds du gratuit et ce qui se passe quand on les atteint, et le risque de continuité lié au rachat.</dd>
+          <dt>Ressources</dt><dd>La base construite, avec un champ « marge » masqué dans une vue, et le panneau de partage.</dd>
+          <dt>Démo</dt><dd>Partager <b>d'abord la vue</b> filtrée, ouvrir le lien en fenêtre privée, montrer que la marge n'apparaît pas. Puis inviter un second compte <b>sur la base</b>, ouvrir, et montrer la marge visible. Les deux écrans l'un après l'autre.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les réglages d'administration d'un espace payant, les permissions avancées, le SSO. L'apprenant est sur un compte gratuit, on reste dans ce qu'il peut faire.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Beaucoup croient qu'un champ masqué dans une vue est un champ protégé. Il ne l'est que dans un partage de vue. Faire la démonstration des deux cas, sinon la leçon ne passe pas.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MAKE ============ -->
+  <section class="tool" id="make">
+    <div class="tool-head">
+      <div class="tool-num">Outil 2 · No-code et automatisation</div>
+      <h2>Make</h2>
+      <p class="tool-sub">On branche la base construite au chapitre précédent sur la boîte mail, pour que les demandes arrivent toutes seules.</p>
+      <div class="chips"><span class="chip">11 leçons · 1 h 20</span></div>
+    </div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>L'apprenant reçoit ses demandes par mail et les recopie à la main dans la base Airtable. On automatise : réception, tri, extraction du besoin, brouillon de réponse.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">1 h de préparation</span></h4>
+<h5>Comptes à ouvrir</h5>
+<ul>
+<li>Un compte Make gratuit <b>neuf</b>, sur <b>make.com</b>. Le compteur de crédits doit être intact à l'image.</li>
+<li>Une <b>boîte Gmail de test</b> dédiée, jamais utilisée ailleurs. Elle sera branchée à Make et resservira au chapitre n8n.</li>
+<li>La clé API du modèle d'IA, générée <b>avant</b> le tournage et collée dans un gestionnaire de mots de passe. Jamais à l'écran.</li>
+<li>Page à garder ouverte : <a href="https://www.make.com/en/pricing">make.com/en/pricing</a>, pour la leçon 3.</li>
+</ul>
+<h5>À fabriquer avant</h5>
+<ul>
+<li><b>Le scénario fini</b>, construit en répétition, gardé en réserve pour la leçon 2.</li>
+<li><b>Un scénario volontairement cassé</b> pour la leçon 11 : un champ obligatoire de la base laissé vide dans le mapping. L'erreur doit tomber en direct.</li>
+<li>La base Airtable du chapitre 1, conservée telle quelle. On s'y branche en leçon 6.</li>
+</ul>
+<h5>Ce que la boîte de test doit contenir</h5>
+<p>Cinq mails envoyés la veille, depuis cinq adresses différentes. Le contenu importe peu, la répartition est tout :</p>
+<ul>
+<li><b>Deux demandes claires</b>, avec des montants très écartés — elles portent les deux branches du routeur de la leçon 8.</li>
+<li><b>Un mail volontairement confus</b> : pas de budget, pas de besoin net, écrit sans ponctuation. C'est lui qui fait la leçon 9, et sans lui l'IA n'a rien à démêler.</li>
+<li><b>Deux mails hors périmètre</b>, une newsletter et une facture, pour le filtre de la leçon 7.</li>
+</ul>
+<p style="margin-top:10px"><b>Pour la leçon 4</b>, chronométrer pour de vrai la saisie manuelle d'une demande dans la base. Le chiffre obtenu est repris en leçon 11. Ne pas l'arrondir.</p>
+</div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — automatiser ses demandes entrantes</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Le point de départ</span><span class="dur">6 min</span></div>
+        <p class="hook">« Six minutes par demande, quinze demandes par semaine. Faisons le calcul ensemble. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Le quotidien : la boîte mail, la recopie, les relances oubliées. Chiffrer le temps réel. Ce chiffre resservira à la dernière leçon.</dd>
+          <dt>Ressources</dt><dd>Boîte Gmail de test avec 5 demandes fictives. La base Airtable du chapitre précédent.</dd>
+          <dt>Démo</dt><dd>Faire une saisie manuelle complète, montre en main, sans commenter.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Make. Cette leçon se tourne dans la boîte mail et dans la base, montre en main. L'outil n'apparaît pas.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">Attraper les demandes</span><span class="dur">8 min</span></div>
+        <p class="hook">« Le déclencheur, c'est ce qui réveille le scénario. Mal réglé, il vide ton quota avant d'avoir servi. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Deux familles de déclencheurs, et la nuance qu'il ne faut pas rater : <b>le module Gmail « Watch emails » n'est pas instantané</b>, c'est un déclencheur programmé qui va voir la boîte à intervalle régulier. Les déclencheurs vraiment instantanés sont les <b>webhooks</b>, et tous les services n'en proposent pas. Donc sur ce cas-là, on règle un intervalle, on l'assume, et on sait ce qu'il coûte. Puis le réflexe qui sauve : lire la sortie d'un module avant d'écrire la suite.</dd>
+          <dt>Ressources</dt><dd>Les 5 mails de test.</dd>
+          <dt>Démo</dt><dd>Poser le module Gmail, <b>montrer le réglage d'intervalle et où il se situe</b>, l'exécuter une fois, dérouler la sortie et repérer expéditeur, objet, corps.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les webhooks, qu'on cite sans les construire. Et aucun autre module que le déclencheur : la suite se pose en leçon 6.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Ne pas annoncer « on va faire ça en temps réel ». Ce serait faux sur Gmail, et l'apprenant s'en apercevra en construisant. Dire la vérité : c'est une surveillance périodique, et voilà comment on choisit la période.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">Écrire dans la base</span><span class="dur">8 min</span></div>
+        <p class="hook">« On relie Make à l'Airtable qu'on a construit hier. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Le module Airtable, le mapping des champs, le glisser-déposer des variables.</dd>
+          <dt>Ressources</dt><dd>La base Airtable, et sa clé d'accès <b>préparée hors caméra</b>.</dd>
+          <dt>Démo</dt><dd>Mapper trois champs, exécuter, aller voir la ligne apparaître dans Airtable.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Le mapping de tous les champs de la base. Trois champs suffisent à faire comprendre le geste.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> C'est le moment où l'on manipule une clé. Dire à voix haute qu'on l'a préparée hors caméra et pourquoi.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Ne garder que les vraies demandes</span><span class="dur">7 min</span></div>
+        <p class="hook">« Tout ce qui arrive dans ta boîte n'est pas une demande. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les filtres. Un filtre mal posé, et la base se remplit de newsletters.</dd>
+          <dt>Ressources</dt><dd>Deux mails hors périmètre dans la boîte de test.</dd>
+          <dt>Démo</dt><dd>Poser un filtre, relancer, montrer le mail bloqué dans l'historique.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les fonctions de texte et les expressions complexes. Un filtre simple sur l'objet du mail, pas une leçon de syntaxe.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">8</span><span class="lesson-t">Traiter selon l'enjeu</span><span class="dur">8 min</span></div>
+        <p class="hook">« Une demande à 500 € et une à 15 000 €, ça ne mérite pas la même réaction. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les routeurs. Deux branches, deux traitements.</dd>
+          <dt>Ressources</dt><dd>Deux mails de montants différents.</dd>
+          <dt>Démo</dt><dd>Ajouter le routeur, exécuter les deux branches, montrer les deux résultats dans la base.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les routeurs à cinq branches et les agrégateurs. Deux branches, deux traitements, et on passe.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">9</span><span class="lesson-t">Extraire le besoin avec l'IA</span><span class="dur">9 min</span></div>
+        <p class="hook">« Le mail dit tout, mais en désordre. On va demander à l'IA de le ranger. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Le module IA. Demander une sortie en champs nommés plutôt qu'un paragraphe. Ce que ça consomme, et pourquoi on ne le met pas partout.</dd>
+          <dt>Ressources</dt><dd>Clé API <b>préparée hors caméra</b>. Le mail le plus confus des cinq.</dd>
+          <dt>Démo</dt><dd>Deux exécutions côte à côte : texte libre d'abord, champs structurés ensuite.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La clé API à l'écran, jamais. Et la comparaison entre modèles : le choix du modèle n'est pas le sujet.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">10</span><span class="lesson-t">Préparer la réponse</span><span class="dur">8 min</span></div>
+        <p class="hook">« On génère la réponse. On ne l'envoie pas. Jamais. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Générer le message et le déposer en brouillon. Pourquoi l'envoi automatique est la ligne qu'on ne franchit pas, même quand le client le demande.</dd>
+          <dt>Ressources</dt><dd>Un modèle de réponse type.</dd>
+          <dt>Démo</dt><dd>Générer, ouvrir le brouillon dans Gmail, le relire à l'écran.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'envoi réel du mail. Le brouillon est le point final de la leçon, et c'est volontaire.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">11</span><span class="lesson-t">Quand ça casse, et la checklist</span><span class="dur">9 min</span></div>
+        <p class="hook">« Ça va casser. La question c'est : est-ce que tu le sauras ? »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Lire l'historique, comprendre une erreur, poser un gestionnaire d'erreurs. Puis les trois causes classiques de crédits qui filent : <b>déclencheur trop fréquent</b> (reprendre le calcul des 96 réveils par jour de la leçon 3), boucle non maîtrisée, module IA appelé à chaque itération alors qu'un filtre placé avant l'aurait évité. La règle qui en découle : <b>on filtre avant d'appeler l'IA, jamais après</b>. Reprendre enfin le chiffre de la leçon 4 et dire ce qu'on a supprimé comme travail.</dd>
+          <dt>Ressources</dt><dd>Un scénario volontairement cassé — champ obligatoire vide.</dd>
+          <dt>Démo</dt><dd>Provoquer l'erreur, la lire, la corriger. Puis montrer le tableau de consommation et où régler l'alerte.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les gestionnaires d'erreurs avancés et les scénarios de reprise. On lit une erreur, on la corrige, on pose une alerte de consommation.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ N8N ============ -->
+  <section class="tool" id="n8n">
+    <div class="tool-head">
+      <div class="tool-num">Outil 3 · No-code et automatisation</div>
+      <h2>n8n</h2>
+      <p class="tool-sub">Le même geste que Make, mais chez le client. Pour les cas où la donnée ne doit pas sortir de la maison.</p>
+      <div class="chips"><span class="chip">10 leçons · 1 h 21</span></div>
+    </div>
+
+    <div class="alert warn"><b>Deux contraintes à annoncer dès la première leçon.</b> L'interface est livrée <b>en anglais uniquement</b> — des traductions communautaires partielles existent, mais elles ne sont pas prises en charge par l'éditeur. Pour une partie de la cible, c'est éliminatoire, il faut le dire franchement. Et il n'y a <b>pas d'offre cloud gratuite permanente</b> : seulement un <b>essai gratuit de 14 jours, limité à 1 000 exécutions</b>, sans carte bancaire. L'apprenant peut donc suivre le chapitre sans payer, mais il a deux semaines, et ensuite c'est l'auto-hébergement ou l'abonnement. C'est cette phrase-là qu'il faut dire, pas « essai payant ».<br><br><b>Point de calendrier à vérifier avant de tourner la leçon 4.</b> L'installation par npm/npx cesse d'être prise en charge à partir de la version 3.0, annoncée pour octobre 2026 : <b>Docker devient la seule méthode d'installation soutenue</b>. Filmer une installation npx aujourd'hui, c'est tourner une vidéo périmée à la publication.</div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>Un client de l'apprenant refuse que ses données passent par un service américain. On refait le scénario du chapitre Make, mais sur une instance qui lui appartient.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">1 h 30 de préparation, dont l'installation</span></h4>
+<h5>Comptes et machine</h5>
+<ul>
+<li><b>Docker installé et testé la veille</b> sur la machine de démonstration. L'installation par npx est hors champ, voir la leçon 4.</li>
+<li>La commande officielle, à relire le jour du tournage : <a href="https://docs.n8n.io/hosting/installation/docker/">docs.n8n.io/hosting/installation/docker</a>.</li>
+<li>Un essai cloud n8n ouvert en parallèle, pour montrer les deux chemins en leçon 3 : <a href="https://n8n.io/pricing">n8n.io/pricing</a>.</li>
+<li>La licence, à ouvrir pour la leçon 10 : fichier <b>LICENSE.md</b> du dépôt n8n-io/n8n sur GitHub.</li>
+</ul>
+<h5>À fabriquer avant</h5>
+<ul>
+<li><b>Le workflow fini</b>, pour la comparaison côte à côte avec Make en leçon 2. Avoir les deux écrans prêts, Make à gauche, n8n à droite.</li>
+<li>Un <b>dossier de sauvegarde</b> identifié sur la machine, pour montrer où vivent les données du conteneur en leçon 4.</li>
+</ul>
+<h5>Données de test</h5>
+<p>On réutilise <b>exactement</b> la même boîte et les mêmes cinq mails que pour Make. C'est ce qui rend la comparaison lisible : même matière, autre outil.</p>
+<p>Pour le Switch de la leçon 7, prévoir <b>trois seuils de montant</b> plutôt que deux. C'est ce qui montre la différence avec le IF, qui n'en coupe que deux.</p>
+<p style="margin-top:10px"><b>Attention au calendrier.</b> L'installation par npm et npx n'est plus prise en charge à partir de la version 3.0, annoncée pour octobre 2026. Vérifier la version disponible le matin du tournage et le dire à l'écran.</p>
+</div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — refaire le scénario chez le client</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Installer son instance</span><span class="dur">10 min</span></div>
+        <p class="hook">« Une commande, et tu as ton n8n qui tourne. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Une seule méthode, montrée jusqu'au bout : <b>Docker</b>. Ne pas filmer l'installation par npx, même si elle marche encore le jour du tournage — elle n'est plus prise en charge à partir de la version 3.0 et la vidéo serait fausse quelques semaines après sa mise en ligne. Expliquer en une phrase ce qu'est Docker pour quelqu'un qui n'en a jamais entendu parler : un moyen de faire tourner un logiciel avec tout ce dont il a besoin, sans rien installer d'autre sur la machine.</dd>
+          <dt>Ressources</dt><dd>Machine de démonstration avec Docker déjà installé, commande testée la veille, et la page d'installation officielle ouverte à l'écran.</dd>
+          <dt>Démo</dt><dd>Lancer le conteneur, ouvrir l'interface, créer le compte administrateur. Montrer aussi <b>où sont stockées les données</b> du conteneur : c'est ce qu'il faudra sauvegarder.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'installation par npm ou npx, même si elle marche encore le jour du tournage. Et pas de configuration de serveur, de nom de domaine ni de certificat : on reste sur une machine locale.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Ne pas accélérer l'installation au montage. Si ça prend quatre minutes, le dire et laisser voir — c'est une information utile.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">Le premier workflow</span><span class="dur">8 min</span></div>
+        <p class="hook">« On reprend exactement le cas du chapitre Make. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Le trigger mail, la lecture de la sortie. Montrer que le raisonnement est identique.</dd>
+          <dt>Ressources</dt><dd>La même boîte de test que pour Make.</dd>
+          <dt>Démo</dt><dd>Poser le trigger, exécuter, lire le panneau de sortie.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les nœuds de condition et d'IA, qui arrivent plus loin. Trigger et lecture de sortie, rien d'autre.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">Les credentials</span><span class="dur">8 min</span></div>
+        <p class="hook">« Chez toi, les clés sont chez toi. C'est tout l'intérêt, et toute la responsabilité. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Où n8n stocke les identifiants quand on s'auto-héberge, et ce que ça implique en sauvegarde et en sécurité.</dd>
+          <dt>Ressources</dt><dd>Clés <b>préparées hors caméra</b>.</dd>
+          <dt>Démo</dt><dd>Créer une credential, montrer qu'elle est masquée après enregistrement.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La valeur d'une clé à l'écran, jamais. Et pas de gestion d'un coffre de secrets externe : trop loin pour le niveau visé.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Conditions et branches</span><span class="dur">8 min</span></div>
+        <p class="hook">« Trois nœuds qui se ressemblent, et un seul fait ce que tu crois. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Faire la correspondance proprement avec le chapitre Make, parce que c'est là que tout le monde se trompe. <b>Filter</b> laisse passer ou jette : c'est le filtre de Make. <b>IF</b> coupe en <b>deux</b> branches, vrai et faux. <b>Switch</b> coupe en <b>autant de branches qu'on veut</b> : c'est lui, le routeur de Make. Donc on filtre les non-demandes avec Filter, et on oriente selon le montant avec Switch — pas avec IF, sauf si deux cas suffisent vraiment.</dd>
+          <dt>Ressources</dt><dd>Les mêmes mails de test.</dd>
+          <dt>Démo</dt><dd>Poser Filter d'abord, montrer un mail écarté. Puis Switch à trois branches selon le montant, et exécuter les trois.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les expressions JavaScript dans les conditions. On reste sur les comparaisons simples de l'interface.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">8</span><span class="lesson-t">Appeler un modèle d'IA</span><span class="dur">9 min</span></div>
+        <p class="hook">« Et si le client veut aussi que l'IA reste chez lui ? »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Brancher un modèle, et évoquer l'option d'un modèle hébergé localement pour les cas les plus sensibles. Rester honnête sur ce que ça coûte en performance.</dd>
+          <dt>Ressources</dt><dd>Clé API préparée hors caméra.</dd>
+          <dt>Démo</dt><dd>Extraire le besoin du mail, en sortie structurée.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'installation d'un modèle local de bout en bout. On évoque l'option, on ne la déroule pas : ce serait un chapitre à soi seul.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">9</span><span class="lesson-t">Mettre en production</span><span class="dur">8 min</span></div>
+        <p class="hook">« Un workflow qui marche sur ton écran et un workflow qui tourne tout seul, ce n'est pas la même chose. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Activer le workflow, le laisser tourner, vérifier les exécutions. La différence entre tester et activer.</dd>
+          <dt>Ressources</dt><dd>Aucune.</dd>
+          <dt>Démo</dt><dd>Activer, envoyer un vrai mail, retrouver l'exécution dans l'historique.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La mise en production chez un vrai client, avec sauvegarde et supervision. On active, on vérifie une exécution, et la responsabilité se traite en leçon 10.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">10</span><span class="lesson-t">Limites et checklist</span><span class="dur">9 min</span></div>
+        <p class="hook">« Ce que tu prends sur toi en livrant une instance auto-hébergée. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les mises à jour, les sauvegardes, qui est responsable quand ça tombe. Puis <b>la licence, et c'est la leçon qui protège le consultant</b> : n8n n'est pas un logiciel libre, il est publié sous une <b>Sustainable Use License</b>. On peut s'en servir pour son propre usage et pour son activité interne, et on peut <b>installer et configurer une instance chez un client</b>. Ce qui est interdit, c'est d'en faire un service qu'on héberge et revend à des tiers, ou de le reconditionner sous une autre marque. Autrement dit : facturer une prestation d'installation et de maintenance, oui ; vendre « mon » plateforme d'automatisation qui est un n8n repeint, non. Et la ligne exacte, celle qui surprend : tant que le client ne reçoit que les <b>résultats</b> des workflows, on reste dans le cadre ; dès qu'il peut <b>créer ou configurer ses propres automatisations</b>, même à travers une interface maison, il faut une licence commerciale. Finir par la question à poser au client avant de s'engager : qui maintient dans six mois ?</dd>
+          <dt>Ressources</dt><dd>Page de licence ouverte à l'écran, modèle de note de livraison.</dd>
+          <dt>Démo</dt><dd>Lire à l'écran le passage de la licence qui tranche, montrer où se fait une sauvegarde, et dérouler la checklist.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Le texte intégral de la licence. On lit le passage qui tranche pour un consultant, et on passe.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOFTR ============ -->
+  <section class="tool" id="softr">
+    <div class="tool-head">
+      <div class="tool-num">Outil 4 · No-code et automatisation</div>
+      <h2>Softr</h2>
+      <p class="tool-sub">Donner une façade à la base Airtable, pour que le client voie son projet sans qu'on lui ouvre les coulisses.</p>
+      <div class="chips"><span class="chip">10 leçons · 1 h 13</span></div>
+    </div>
+
+    <div class="alert warn"><b>L'interface de construction est en anglais</b> — le portail livré au client, lui, se rédige entièrement en français. À dire en leçon 1 pour que personne n'abandonne au premier écran.<br><br><b>Grille tarifaire changée le 5 août 2026.</b> Abonnement par paliers, dépassements facturés automatiquement avec 7 jours de grâce, et séparation entre <b>Team Users</b> et <b>Client Users</b>. Les clients payants existants gardent leur plan historique. Ce n'est pas une bascule en facturation à l'usage, mais la prévisibilité baisse sur les dépassements. À dire clairement en leçon 3.</div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>L'apprenant veut que ses clients suivent l'avancement de leur projet sans lui écrire trois fois par semaine. On construit le portail client, branché sur la base Airtable.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">50 min de préparation</span></h4>
+<h5>Comptes à ouvrir</h5>
+<ul>
+<li>Un compte Softr gratuit sur <a href="https://studio.softr.io/">studio.softr.io</a>. Rappel : le gratuit plafonne à <b>5 utilisateurs d'application</b>.</li>
+<li><b>Deux adresses mail de test</b>, qui seront les deux comptes clients de la leçon 7. Les créer avant, les mots de passe dans un gestionnaire.</li>
+<li>Un compte payant de démonstration, uniquement pour montrer le réglage du nom de domaine en leçon 9. Si on n'en a pas, filmer la page de tarifs à la place et le dire.</li>
+<li>Page à garder ouverte : <a href="https://www.softr.io/pricing">softr.io/pricing</a>, pour la leçon 3.</li>
+</ul>
+<h5>Ce qu'il faut avoir dans la base avant de commencer</h5>
+<ul>
+<li>Une colonne <b>Email client</b> dans la table Affaires, remplie avec les deux adresses de test. C'est elle qui porte le filtrage de la leçon 7, et sans elle la leçon ne se tourne pas.</li>
+<li><b>Deux clients distincts</b>, chacun avec ses propres affaires. S'ils n'ont qu'une affaire chacun, la démonstration d'isolation ne prouve rien.</li>
+<li>Le champ <b>Marge</b>, bien présent dans la table, pour montrer en leçon 5 qu'il remonte dans la liste des champs disponibles du bloc.</li>
+<li>Un livrable en attente de validation, pour la leçon 8.</li>
+<li>Un logo et deux couleurs pour le client fictif de la leçon 9.</li>
+</ul>
+<p style="margin-top:10px"><b>Le filtre à poser en leçon 7 :</b> Email client = utilisateur connecté. Et le test se filme en entier — connexion compte A, déconnexion, connexion compte B, sans coupe au montage. C'est la preuve que l'apprenant doit voir.</p>
+</div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — le portail client</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Ce que le client doit voir</span><span class="dur">7 min</span></div>
+        <p class="hook">« Avant de construire : qu'est-ce qu'il a le droit de voir, et qu'est-ce qu'il ne doit surtout pas voir ? »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Lister les écrans, et surtout lister ce qui reste caché : marges, notes internes, autres clients. C'est la leçon qui évite l'incident.</dd>
+          <dt>Ressources</dt><dd>Feuille et stylo.</dd>
+          <dt>Démo</dt><dd>Dessiner les trois écrans du portail, face caméra.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'écran de Softr. Feuille et stylo, face caméra. C'est la leçon qui évite l'incident, elle ne se tourne pas dans l'outil.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">Brancher la base</span><span class="dur">7 min</span></div>
+        <p class="hook">« On connecte Softr à l'Airtable du premier chapitre. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>La connexion à la source de données. Le point à bien poser : on connecte <b>une table</b>, et c'est ensuite, bloc par bloc, qu'on choisit <b>quels champs sont affichés</b>. Il ne faut donc pas promettre qu'une vue Airtable protège quoi que ce soit : ce qui n'apparaît pas à l'écran dépend de ce qu'on a configuré dans le bloc, pas de la vue d'origine. D'où la règle : ne jamais compter sur la vue pour cacher une marge, et vérifier champ par champ ce qu'on expose.</dd>
+          <dt>Ressources</dt><dd>La base, avec un champ sensible — marge ou note interne — à ne surtout pas afficher.</dd>
+          <dt>Démo</dt><dd>Connecter la table, poser un bloc, montrer la <b>liste complète des champs disponibles</b> dans le bloc — y compris la marge — puis décocher explicitement ce qu'on ne veut pas voir sortir.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La construction de la page, qui est la leçon 6. On connecte la source et on décoche les champs sensibles.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">La première page</span><span class="dur">8 min</span></div>
+        <p class="hook">« Un bloc liste, et le projet du client s'affiche. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Poser un bloc liste, choisir les champs affichés, soigner les libellés. Le client ne doit jamais lire un nom de champ technique.</dd>
+          <dt>Ressources</dt><dd>Données de test réalistes, pas des « test1 test2 ».</dd>
+          <dt>Démo</dt><dd>Construire la page, renommer trois libellés, prévisualiser.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les blocs avancés, les graphiques, les vues cartes. Un bloc liste bien réglé suffit à porter la leçon.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Chaque client chez lui</span><span class="dur">9 min</span></div>
+        <p class="hook">« Le moment où ça devient sérieux : faire en sorte qu'un client ne voie jamais le dossier d'un autre. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>C'est la leçon la plus importante du chapitre, et celle où la confusion coûte le plus cher. <b>Les conditions de visibilité</b> décident si un bloc ou une page s'affiche pour tel type d'utilisateur : elles cachent un écran entier, elles ne trient pas des lignes. <b>Le filtrage conditionnel</b> du bloc liste, lui, compare un champ de l'enregistrement à une donnée de l'utilisateur connecté — son e-mail, par exemple — et c'est <b>lui seul</b> qui fait qu'un client ne voit que ses dossiers. Il faut donc une colonne dans la base qui relie chaque affaire à l'e-mail de son client, et un filtre du type « e-mail du client = utilisateur connecté ».</dd>
+          <dt>Ressources</dt><dd>Deux comptes de test, deux dossiers clients distincts, et la colonne e-mail déjà remplie dans la base.</dd>
+          <dt>Démo</dt><dd>Poser le filtre sur l'utilisateur connecté, puis se connecter avec le compte A, se déconnecter, se connecter avec le compte B, et montrer que chacun ne voit que son dossier.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les groupes d'utilisateurs et les rôles personnalisés. On montre le filtre sur l'utilisateur connecté, qui est le mécanisme qui protège vraiment.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Faire le test devant la caméra, pour de vrai, avec deux connexions successives. Et dire explicitement qu'une condition de visibilité seule ne sépare <b>pas</b> les clients : c'est l'erreur qui fait fuiter un dossier chez le voisin.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">8</span><span class="lesson-t">Laisser le client agir</span><span class="dur">8 min</span></div>
+        <p class="hook">« Valider un livrable en un clic, plutôt qu'un mail de trois lignes. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Un formulaire ou un bouton qui écrit dans la base. Ce qu'on autorise, et ce qu'on n'autorise jamais : supprimer, modifier un montant.</dd>
+          <dt>Ressources</dt><dd>Un livrable en attente de validation.</dd>
+          <dt>Démo</dt><dd>Valider depuis le portail, aller voir le champ changé dans Airtable.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La suppression d'enregistrements depuis le portail, et la modification d'un montant. On montre justement qu'on ne les autorise pas.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">9</span><span class="lesson-t">Habiller aux couleurs du client</span><span class="dur">7 min</span></div>
+        <p class="hook">« Dix minutes de mise en forme, et ce n'est plus un outil : c'est son espace. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Logo, couleurs, typographie : disponibles dès le gratuit. Le <b>nom de domaine personnalisé et le retrait de la marque Softr sont réservés aux plans payants</b> — c'est à dire au moment où on le présente, parce que c'est exactement l'argument qu'un client remarque. Expliquer comment on le facture : le portail à ses couleurs sur son propre domaine fait partie de la prestation, pas du cadeau.</dd>
+          <dt>Ressources</dt><dd>Logo et couleurs d'un client fictif, et un compte payant de démonstration pour montrer le domaine.</dd>
+          <dt>Démo</dt><dd>Appliquer la charte sur le gratuit, montrer l'avant et l'après, puis montrer <b>où se règle le domaine personnalisé</b> et le plan qu'il exige.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La configuration DNS d'un nom de domaine. On montre où ça se règle et quel plan l'exige, pas comment on édite une zone DNS.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">10</span><span class="lesson-t">Limites et checklist</span><span class="dur">8 min</span></div>
+        <p class="hook">« Avant de donner l'adresse à ton client. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Tester chaque compte, vérifier qu'aucun champ interne ne fuit, mesurer le nombre d'utilisateurs facturables, poser la limite de ce que le client peut modifier. Et ce qu'on écrit dans la note de livraison.</dd>
+          <dt>Ressources</dt><dd>Le portail construit, les deux comptes de test.</dd>
+          <dt>Démo</dt><dd>Dérouler la checklist en direct sur le portail.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les tests de charge et les questions d'hébergement. La checklist porte sur ce qui fuit et sur ce qui se facture.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NOTION ============ -->
+  <section class="tool" id="notion">
+    <div class="tool-head">
+      <div class="tool-num">Outil 5 · Productivité et data</div>
+      <h2>Notion</h2>
+      <p class="tool-sub">Le cerveau du cabinet : ce qu'on sait, ce qu'on a déjà fait, ce qu'on réutilise d'un client à l'autre.</p>
+      <div class="chips"><span class="chip">12 leçons · 1 h 27</span></div>
+    </div>
+
+    <div class="alert"><b>À ne surtout pas annoncer de travers.</b> Les <b>agents personnalisés Notion sont réservés aux plans Business et Enterprise</b>, et le système de crédits qui va avec également. Ils ne sont pas disponibles sur le gratuit. L'apprenant au palier gratuit dispose d'un <b>essai limité de l'IA</b>, pas d'agents. Promettre l'inverse en leçon 3, c'est envoyer toute la cible se cogner à un mur de paiement en pleine vidéo. Le chapitre a été réécrit en conséquence : ce qui tient sur le gratuit est démontré sur le gratuit, et ce qui demande un plan payant est annoncé comme tel.</div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>L'apprenant refait le même travail à chaque client : la même trame de proposition, les mêmes questions de cadrage, la même explication en réunion. On construit la base de connaissance qui arrête ça.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">1 h de préparation</span></h4>
+<h5>Comptes à ouvrir</h5>
+<ul>
+<li>Un compte Notion gratuit sur <a href="https://www.notion.com/signup">notion.com/signup</a>, avec <b>un deuxième membre invité</b> : c'est ce qui fait apparaître le plafond de 1 000 blocs, à montrer en leçon 3.</li>
+<li>Un <b>compte Business de démonstration</b>, uniquement pour la seconde partie de la leçon 10. Sans lui, on ne peut pas montrer les agents, et il faut le dire plutôt que de les présenter comme accessibles.</li>
+<li>Page à garder ouverte : <a href="https://www.notion.com/pricing">notion.com/pricing</a>, pour la leçon 3.</li>
+</ul>
+<h5>À fabriquer avant</h5>
+<ul>
+<li><b>Le Notion fouillis</b> de la leçon 1 : un vrai espace mal rangé, pages sans titre, doublons, brouillons de 2024. À constituer sur plusieurs jours, pas en dix minutes.</li>
+<li><b>Un espace vraiment dense</b> pour la leçon 10 : au moins vingt pages avec du contenu réel. Sur un espace vide, la démonstration ne prouve rien.</li>
+<li><b>Trois propositions commerciales anonymisées</b> qui se ressemblent à 70 %, pour la leçon 4. Les ouvrir côte à côte et compter ce qui se répète.</li>
+<li>Une page contenant une <b>sous-page sensible</b>, pour la leçon 11.</li>
+</ul>
+<h5>Ce que l'espace doit contenir</h5>
+<ul>
+<li><b>Les mêmes clients que dans la base Airtable</b> du chapitre 1. La cohérence d'un chapitre à l'autre est ce qui fait tenir le fil rouge.</li>
+<li>Une base Prestations reliée à la base Clients, pour la leçon 8.</li>
+<li>Des <b>statuts et des dates variés</b>, sinon les trois vues de la leçon 9 se ressemblent toutes.</li>
+<li><b>Au moins vingt pages avec du vrai contenu</b> pour la leçon 10. Sur un espace vide, la démonstration ne prouve rien.</li>
+<li>Une page contenant une <b>sous-page sensible</b>, pour la leçon 11.</li>
+</ul>
+<p style="margin-top:10px"><b>Pour la leçon 10</b>, repérer à l'avance une question dont la réponse se trouve dans une page ancienne, et vérifier que l'IA la retrouve vraiment. Si elle échoue en direct, la leçon tombe.</p>
+</div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — la base de connaissance du cabinet</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Le point de départ</span><span class="dur">6 min</span></div>
+        <p class="hook">« Combien de fois tu as réécrit la même proposition cette année ? »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Lister ce qui se répète d'un client à l'autre. Chiffrer le temps perdu.</dd>
+          <dt>Ressources</dt><dd>Trois propositions réelles, anonymisées, qui se ressemblent.</dd>
+          <dt>Démo</dt><dd>Les ouvrir côte à côte et montrer les 70 % identiques.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Notion. On ouvre trois propositions réelles côte à côte et on compte ce qui se répète. L'outil arrive en leçon 5.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">L'arborescence</span><span class="dur">7 min</span></div>
+        <p class="hook">« Trois niveaux maximum. Au quatrième, plus personne ne retrouve rien. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Structurer : Clients, Prestations, Ressources. La règle des trois niveaux et pourquoi elle tient.</dd>
+          <dt>Ressources</dt><dd>Espace vierge.</dd>
+          <dt>Démo</dt><dd>Créer les trois pages racines.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les bases de données, qui arrivent en leçon 6. Trois pages racines, et on s'arrête.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">La base Clients</span><span class="dur">8 min</span></div>
+        <p class="hook">« Une ligne par client, et tout ce qui le concerne dedans. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Créer la base, poser les propriétés utiles, et surtout les propriétés qu'on remplira vraiment.</dd>
+          <dt>Ressources</dt><dd>Trois clients fictifs cohérents.</dd>
+          <dt>Démo</dt><dd>Créer la base, remplir une fiche complète.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les relations et les rollups, qui ont leur leçon. On pose les propriétés et on remplit une fiche.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Le modèle qui fait gagner une heure</span><span class="dur">9 min</span></div>
+        <p class="hook">« Tu crées un nouveau client, et la trame complète apparaît déjà remplie. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les modèles de page dans une base. C'est le cœur du chapitre : ce qui transforme Notion en outil de production.</dd>
+          <dt>Ressources</dt><dd>La trame de cadrage de l'apprenant.</dd>
+          <dt>Démo</dt><dd>Construire le modèle, créer un nouveau client, montrer la page pré-remplie.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les modèles automatiques et les boutons. Un modèle de page dans une base, bien fait, porte toute la leçon.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">8</span><span class="lesson-t">Relier les bases</span><span class="dur">8 min</span></div>
+        <p class="hook">« Ouvrir un client et voir toutes ses prestations, sans rien recopier. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Relation et rollup. Le même raisonnement qu'avec Airtable, dans une autre interface.</dd>
+          <dt>Ressources</dt><dd>Les bases Clients et Prestations remplies.</dd>
+          <dt>Démo</dt><dd>Poser la relation, ouvrir une fiche client, montrer les prestations remontées.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les formules complexes. Une relation et un rollup simple, comme au chapitre Airtable, pour que le pont se voie.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">9</span><span class="lesson-t">Les vues qui font travailler la base</span><span class="dur">7 min</span></div>
+        <p class="hook">« Une base qu'on ne sait pas filtrer, c'est une liste qu'on finit par ne plus ouvrir. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>La même donnée, plusieurs écrans : tableau, tableau de bord par statut, calendrier, galerie. Puis les trois réglages qui font toute la différence et que presque personne ne pose : le <b>filtre</b> (ne montrer que les clients actifs), le <b>tri</b> (la prochaine échéance en haut), et le <b>regroupement</b> (une colonne par statut). Et la règle de méthode : une vue par usage réel de la journée, pas une vue parce que c'est joli.</dd>
+          <dt>Ressources</dt><dd>La base Clients remplie des leçons précédentes, avec des statuts et des dates variés.</dd>
+          <dt>Démo</dt><dd>Créer trois vues de la même base — « à relancer cette semaine », tableau par statut, calendrier des échéances — puis déplacer une fiche dans le tableau et montrer le statut changé dans les deux autres vues.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les vues liées entre plusieurs bases et les tableaux de bord. Trois vues d'une même base, une par usage réel.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">10</span><span class="lesson-t">L'IA sur ses propres contenus</span><span class="dur">9 min</span></div>
+        <p class="hook">« L'intérêt, ce n'est pas que l'IA écrive. C'est qu'elle ait lu ce que tu as déjà fait. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Interroger son espace, faire ressortir ce qu'on a écrit il y a huit mois. La différence entre une IA générique et une IA qui travaille sur sa propre matière. <b>Annoncer le plan à chaque geste</b> : l'assistant qui cherche dans l'espace et rédige depuis les pages existantes est accessible sur les plans payants et en essai limité sur le gratuit ; les <b>agents personnalisés</b>, ceux qu'on configure une fois pour qu'ils travaillent seuls, demandent un plan <b>Business</b>. Montrer les deux, en disant clairement lequel l'apprenant pourra refaire ce soir et lequel non.</dd>
+          <dt>Ressources</dt><dd>Un espace réellement rempli — au moins vingt pages. Un compte gratuit et un compte Business de démonstration.</dd>
+          <dt>Démo</dt><dd>Poser une question dont la réponse est dans une vieille page, et la voir ressortir. Puis basculer sur le compte Business pour montrer un agent, <b>en le disant à l'écran</b>.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La construction d'un agent personnalisé pas à pas. On le montre sur un compte Business en le disant, on ne le fait pas refaire.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Sur un espace vide, la démo ne prouve rien. Préparer un espace vraiment dense avant de tourner. Et ne jamais enchaîner les deux démonstrations sans nommer le changement de plan entre les deux.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">11</span><span class="lesson-t">Partager sans tout ouvrir</span><span class="dur">7 min</span></div>
+        <p class="hook">« Donner une page à un client sans lui donner la clé de la maison. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les niveaux de partage, le lien public, et ce qu'il expose vraiment.</dd>
+          <dt>Ressources</dt><dd>Une page contenant une sous-page sensible.</dd>
+          <dt>Démo</dt><dd>Partager, ouvrir en fenêtre privée, montrer ce qui est accessible.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les permissions d'un espace d'équipe payant. On montre le partage d'une page et ce que voit vraiment un invité.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">12</span><span class="lesson-t">Limites et checklist</span><span class="dur">8 min</span></div>
+        <p class="hook">« Un espace Notion vit ou meurt selon ce qu'on y range la première semaine. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les données clients et leur conservation. Les plafonds du gratuit à surveiller : les 1 000 blocs dès qu'on est deux, les 10 invités, les 7 jours d'historique — au-delà, une suppression accidentelle n'est plus récupérable. Et la règle d'entretien : une page qui n'a pas servi en six mois est archivée, pas gardée « au cas où ».</dd>
+          <dt>Ressources</dt><dd>L'espace construit.</dd>
+          <dt>Démo</dt><dd>Dérouler la checklist, archiver une page morte.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les sauvegardes et les exports automatisés. La checklist porte sur ce qu'on range, ce qu'on archive et ce qui se perd après 7 jours.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PERPLEXITY ============ -->
+  <section class="tool" id="perplexity">
+    <div class="tool-head">
+      <div class="tool-num">Outil 6 · Outils IA natifs</div>
+      <h2>Perplexity + Comet</h2>
+      <p class="tool-sub">Arriver en rendez-vous en sachant de quoi on parle, avec des sources qu'on peut citer.</p>
+      <div class="chips"><span class="chip">11 leçons · 1 h 18</span></div>
+    </div>
+
+    <div class="alert warn"><b>Les quotas du gratuit sont publiés, et ils cadrent le cas pratique.</b> Recherches simples illimitées, mais <b>3 recherches Pro par jour</b> et <b>1 recherche Research par mois</b>. Autrement dit : l'apprenant qui suit le chapitre ne peut pas lancer une recherche approfondie à chaque leçon. Le cas pratique a donc été construit pour tenir dans ce budget — une seule Research sur toute la préparation du rendez-vous, placée là où elle sert le plus, et des recherches simples pour tout le reste. Le dire en leçon 3 et s'y tenir dans les démonstrations. Vérifier les chiffres à l'écran le jour du tournage, ils bougent.</div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>L'apprenant a un rendez-vous dans deux heures avec une entreprise qu'il ne connaît pas. On prépare le rendez-vous de bout en bout : le secteur, l'entreprise, l'interlocuteur, les questions à poser.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">40 min de préparation</span></h4>
+<h5>Comptes à ouvrir</h5>
+<ul>
+<li>Un compte Perplexity <b>gratuit</b>, et surtout dont la <b>recherche Research du mois n'a pas été consommée</b>. C'est la contrainte la plus facile à rater : elle ne se recharge qu'au mois suivant.</li>
+<li><b>Comet installé</b> sur la machine de tournage, pour la leçon 7. Le téléchargement est gratuit et ouvert à tous ; seules certaines fonctions demandent un abonnement.</li>
+<li>Les <b>paramètres du compte ouverts</b> en onglet, pour la leçon 11 : c'est là qu'on désactive la conservation des données à des fins d'amélioration des modèles, activée par défaut.</li>
+</ul>
+<h5>Le cas à choisir</h5>
+<p>Une <b>entreprise réelle</b>, de taille moyenne, avec de la matière publique. Les trois critères à vérifier avant de la retenir :</p>
+<ul>
+<li>Un site avec une page d'offres d'emploi <b>et</b> une page tarifaire, sinon la leçon 7 n'a rien à lire.</li>
+<li>Au moins deux communiqués ou articles de presse des douze derniers mois, pour la leçon 6.</li>
+<li>Un dirigeant ou responsable avec un profil professionnel public, pour la leçon 8.</li>
+</ul>
+<h5>Budget de recherches, à respecter pendant le tournage</h5>
+<div class="data">Gratuit : recherches simples illimitées
+         3 Pro par jour
+         1 Research par mois
+
+Leçon 2   1 Pro          comparaison des modes, sur une question neutre
+Leçon 5   1 Research     le secteur. La seule du mois. Ne pas la dépenser avant.
+Leçon 6   1 à 2 Pro      l'entreprise
+Leçon 7   0              Comet lit des pages, ça ne consomme pas de recherche
+Leçon 8   simples        l'interlocuteur
+
+→ Tourner la leçon 5 en premier si on ne peut pas enchaîner dans la journée.</div>
+<h5>À repérer avant</h5>
+<p>Pour la leçon 11, <b>un cas réel où le résumé ne dit pas tout à fait ce que dit la source citée</b>. Le chercher à l'avance : on ne le trouve pas en direct, et c'est la leçon qui donne le réflexe de vérification.</p>
+</div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">1</span><span class="lesson-t">Pourquoi pas un chatbot classique</span><span class="dur">6 min</span></div>
+        <p class="hook">« La différence tient en un mot : la source. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Perplexity cherche puis répond, en citant. Pourquoi ça change tout quand on doit défendre une information devant un client.</dd>
+          <dt>Ressources</dt><dd>Aucune.</dd>
+          <dt>Démo</dt><dd>Même question posée à un assistant classique et à Perplexity, côte à côte.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les modes et les quotas, qui sont les leçons 2 et 3. Une question posée à deux outils, et la différence se voit.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">2</span><span class="lesson-t">Les modes et Comet</span><span class="dur">7 min</span></div>
+        <p class="hook">« Trois modes, trois coûts. Celui qu'on choisit par réflexe est rarement le bon. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>La recherche simple, illimitée sur le gratuit, qui répond en citant — c'est 90 % des usages. La recherche <b>Pro</b>, qui creuse davantage, <b>3 par jour</b>. La recherche <b>Research</b>, qui produit un dossier complet, <b>1 par mois</b> sur le gratuit. La leçon utile n'est pas « comment on clique », c'est <b>comment on arbitre</b> : à quelle question on dépense sa Research du mois, et pourquoi. On annonce ici que dans le cas pratique, elle sera dépensée sur le secteur, pas sur l'entreprise.</dd>
+          <dt>Ressources</dt><dd>Un compte gratuit, pour que les compteurs affichés soient ceux de l'apprenant.</dd>
+          <dt>Démo</dt><dd>Lancer la même question en recherche simple puis en Pro, comparer la profondeur et le temps, et <b>montrer le compteur qui descend</b> juste après.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La recherche sur le cas pratique, qui commence en leçon 4. On compare les modes sur une question neutre pour ne pas dépenser le budget du cas.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">3</span><span class="lesson-t">Ce que ça coûte vraiment</span><span class="dur">6 min</span></div>
+        <p class="hook">« Le gratuit tient pour un usage occasionnel. Voilà où il s'arrête. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les chiffres du gratuit : recherches simples illimitées, <b>3 Pro par jour</b>, <b>1 Research par mois</b>, téléversement de fichiers limité. Préciser que <b>Comet est téléchargeable gratuitement par tout le monde</b> depuis octobre 2025, sans abonnement — en disant au passage que certaines fonctions, comme l'assistant de messagerie, restent réservées aux abonnés. Et dire ce que l'abonnement payant achète réellement : le volume de recherches approfondies, pas une meilleure qualité de réponse. Un consultant qui prépare deux rendez-vous par semaine peut rester au gratuit ; celui qui en prépare dix ne peut pas.</dd>
+          <dt>Ressources</dt><dd>Page de tarifs ouverte, et un compte gratuit avec ses compteurs visibles.</dd>
+          <dt>Démo</dt><dd>Montrer le compteur de recherches Pro restantes du jour, et celui de la Research du mois.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les offres entreprise et l'API. On montre les compteurs d'un compte gratuit, ceux que l'apprenant aura.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — préparer un rendez-vous en deux heures</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Le point de départ</span><span class="dur">5 min</span></div>
+        <p class="hook">« Un nom d'entreprise, un prénom, et deux heures devant toi. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Poser le cas. Ce qu'on doit savoir avant d'entrer : le secteur, l'entreprise, la personne, et une hypothèse de problème.</dd>
+          <dt>Ressources</dt><dd>Une entreprise réelle choisie à l'avance, de taille moyenne, avec de la matière publique.</dd>
+          <dt>Démo</dt><dd>Aucune. Poser le plan de travail.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'écran. On pose le cas et le plan de travail, face caméra.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">Comprendre le secteur</span><span class="dur">8 min</span></div>
+        <p class="hook">« Vingt minutes pour parler le même langage que lui. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Formuler une question de cadrage utile. La différence entre « parle-moi du secteur X » et une question qui donne une réponse exploitable. <b>C'est ici, et seulement ici, qu'on dépense la recherche Research du mois</b> : le secteur est le seul sujet qui mérite un dossier complet, parce qu'il resservira pour tous les prospects du même marché. Le dire à l'écran, c'est enseigner l'arbitrage autant que l'outil.</dd>
+          <dt>Ressources</dt><dd>Un compte gratuit dont la Research du mois n'a pas été consommée.</dd>
+          <dt>Démo</dt><dd>Poser une question faible, montrer la réponse plate, puis la reformuler et comparer.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Plusieurs recherches Research. Une seule est dépensée, sur le secteur, et on dit pourquoi.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">Creuser l'entreprise</span><span class="dur">8 min</span></div>
+        <p class="hook">« Ce qu'elle dit d'elle, et ce que les autres en disent. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Chercher les signaux : recrutements, communiqués, changements récents. Distinguer la communication officielle de l'information vérifiable.</dd>
+          <dt>Ressources</dt><dd>L'entreprise choisie.</dd>
+          <dt>Démo</dt><dd>Recherche en direct, puis ouvrir deux sources citées pour vérifier qu'elles disent bien ce qui est annoncé.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les recherches sur des personnes, qui attendent la leçon 8 et son cadre. Ici on reste sur l'entreprise.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Toujours ouvrir au moins une source citée à l'écran. C'est ce geste-là qu'on veut transmettre.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Faire travailler Comet sur le site du client</span><span class="dur">8 min</span></div>
+        <p class="hook">« Perplexity cherche sur le web. Comet lit la page que tu as sous les yeux. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>La différence de geste : on ouvre le site de l'entreprise, ses pages produits, son espace presse, ses offres d'emploi, et on demande à l'assistant du navigateur de <b>lire ce qui est affiché</b> — résumer une offre, comparer deux pages tarifaires, repérer ce qui a changé. C'est ce que la recherche web ne fait pas bien, parce qu'une partie de ces pages n'est pas indexée ou pas à jour dans les index.<br><b>Et la limite à poser dans la même leçon :</b> un assistant qui lit une page exécute aussi ce que la page contient. Une consigne cachée dans un site peut le détourner. Donc on ne laisse jamais un navigateur assisté agir seul sur une page de connexion, une messagerie ou un espace client, et on relit ce qu'il rapporte avant de s'en servir.</dd>
+          <dt>Ressources</dt><dd>Comet installé, et le site de l'entreprise choisie, avec au moins une page d'offres d'emploi et une page tarifaire.</dd>
+          <dt>Démo</dt><dd>Ouvrir trois onglets du site, demander une synthèse des signaux de recrutement, et <b>vérifier une affirmation en remontant à la page</b>. Puis montrer le réglage où l'on contrôle ce que Comet a le droit de faire.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Comet en train de cliquer, de remplir un formulaire ou de se connecter à un compte. On lit des pages, on n'agit pas.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Comet est présenté partout comme un gadget impressionnant. Dans ce guide, c'est un outil de lecture, pas un outil d'action. Si la démonstration montre Comet en train de cliquer et de remplir des formulaires, la leçon de prudence qui suit ne passera plus.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">8</span><span class="lesson-t">Situer l'interlocuteur</span><span class="dur">7 min</span></div>
+        <p class="hook">« Son parcours, son périmètre, et ce qu'il a probablement en tête. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Chercher ce qui est public et professionnel : le rôle, le périmètre, les prises de parole. Et poser la limite, qui n'est pas qu'une question de politesse mais de droit. Trois règles concrètes : on ne collecte <b>jamais</b> de donnée sensible au sens du RGPD — santé, opinions politiques, religion, orientation, appartenance syndicale — même si elle est publique ; on <b>informe la personne</b> de ce qu'on a collecté sur elle au plus tard lors du premier contact, parce que la donnée n'a pas été recueillie auprès d'elle ; et on <b>ne conserve pas</b> indéfiniment un dossier de prospection — l'usage admis est de trois ans sans contact.</dd>
+          <dt>Ressources</dt><dd>Un profil public réel, et la phrase d'information à dire en rendez-vous, écrite à l'avance.</dd>
+          <dt>Démo</dt><dd>Recherche ciblée sur le rôle professionnel, en <b>disant à voix haute ce qu'on ne cherche pas et pourquoi</b>. Puis lire la phrase d'information face caméra.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Tout ce qui relève de la vie privée : famille, santé, opinions, réseaux personnels. Et on le dit à voix haute pendant la recherche.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> « C'est public donc j'ai le droit » est faux. Public veut dire accessible, pas réutilisable sans condition. C'est la phrase à corriger explicitement dans la vidéo, parce que toute la cible l'a en tête.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">9</span><span class="lesson-t">Transformer en questions</span><span class="dur">8 min</span></div>
+        <p class="hook">« La recherche ne sert à rien si elle ne devient pas une question à poser. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Passer des faits collectés à cinq questions ouvertes. C'est l'étape que tout le monde saute.</dd>
+          <dt>Ressources</dt><dd>Les résultats des trois leçons précédentes.</dd>
+          <dt>Démo</dt><dd>Construire les cinq questions à l'écran, en montrant d'où vient chacune.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">De nouvelles recherches. On travaille sur ce qui a été collecté aux leçons 5 à 8, rien d'autre.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">10</span><span class="lesson-t">Le brief d'une page</span><span class="dur">7 min</span></div>
+        <p class="hook">« Une page, imprimable, lisible dans l'ascenseur. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Mettre en forme le brief et le ranger dans la base Notion du chapitre précédent. Montrer la chaîne entre les outils.</dd>
+          <dt>Ressources</dt><dd>L'espace Notion construit.</dd>
+          <dt>Démo</dt><dd>Générer le brief, le coller dans la fiche client Notion.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La mise en forme avancée du document. Une page lisible, rangée dans la fiche client, et c'est fini.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">11</span><span class="lesson-t">Limites et checklist</span><span class="dur">8 min</span></div>
+        <p class="hook">« Une source citée n'est pas une source vérifiée. Et par défaut, tes recherches servent à entraîner le modèle. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Perplexity cite, mais peut mal interpréter. La règle : tout chiffre qui entrera dans une proposition commerciale est ouvert et vérifié à la source. Puis le réglage que personne ne va voir : <b>la conservation des données à des fins d'amélioration des modèles est activée par défaut</b>, et il faut aller la désactiver dans les paramètres. C'est décisif pour un consultant qui tape le nom de ses prospects et le contenu de ses dossiers dans la barre de recherche. Rappeler enfin les règles de la leçon 8 sur les personnes.</dd>
+          <dt>Ressources</dt><dd>Un cas réel où la citation ne dit pas tout à fait ce que le résumé affirme, repéré avant le tournage. Les paramètres du compte, ouverts.</dd>
+          <dt>Démo</dt><dd>Montrer l'écart entre le résumé et la source. Puis ouvrir les paramètres, <b>montrer le réglage activé par défaut, et le désactiver à l'écran</b>.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les techniques de vérification journalistique. On ouvre une source, on montre l'écart, on désactive la conservation des données.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEEXI ============ -->
+  <section class="tool" id="leexi">
+    <div class="tool-head">
+      <div class="tool-num">Outil 7 · Productivité et data</div>
+      <h2>Leexi</h2>
+      <p class="tool-sub">Capsule courte. Ce qui se dit en rendez-vous devient du texte exploitable, sans prendre de notes.</p>
+      <div class="chips"><span class="chip">7 leçons · 47 min</span></div>
+    </div>
+
+    <div class="alert warn"><b>Ce qui était noté « aucun palier gratuit » est inexact.</b> Leexi propose un <b>essai gratuit de 7 jours sur l'ensemble de la suite Leexi One</b>. Il n'y a donc pas de blocage pédagogique : l'apprenant peut refaire l'intégralité de la capsule, à condition de le faire dans sa semaine d'essai. C'est cette consigne-là qu'il faut donner en leçon 1 — « ouvre ton essai le jour où tu attaques la capsule, pas trois semaines avant » — plutôt qu'un avertissement décourageant. Au-delà des 7 jours, c'est un abonnement : le premier plan démarre à 12 $ par licence et par mois en annuel, et il n'y a pas de palier gratuit permanent. Une seule nuance, à connaître sans la mettre en avant : à l'intérieur d'un espace déjà payant, une licence « Invité » gratuite existe, mais elle ne transcrit pas vos propres réunions. Les deux informations doivent être dites ensemble.</div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>L'apprenant sort d'un rendez-vous client. Il a griffonné trois lignes et il a déjà oublié le reste. On transforme l'enregistrement en compte rendu, en actions, et en matière pour la proposition.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">1 h 15 de préparation, dont l'enregistrement joué</span></h4>
+<h5>Comptes à ouvrir</h5>
+<ul>
+<li>L'<b>essai gratuit de 7 jours</b> de Leexi, ouvert le jour où l'on commence à tourner la capsule. Sept jours, c'est court : ne pas l'ouvrir trois semaines avant.</li>
+<li>Un <b>rendez-vous de test dans l'agenda</b> connecté, pour montrer le bot qui rejoint la visio en leçon 3.</li>
+<li>Page à garder ouverte : <a href="https://www.leexi.ai/fr/tarifs">leexi.ai/fr/tarifs</a>, pour la leçon 1.</li>
+</ul>
+<h5>L'enregistrement à jouer</h5>
+<p>Un rendez-vous client fictif de <b>15 minutes, deux voix</b>, enregistré à l'avance. C'est la pièce maîtresse de la capsule : tout le reste en découle. Le trame :</p>
+<div class="data">0:00   Présentation, contexte de l'entreprise
+2:00   Le besoin exprimé, un peu en désordre
+5:00   Deux DÉCISIONS claires, à retrouver en leçon 5
+         « on part sur une mise en place en novembre »
+         « c'est Sofia qui sera votre interlocutrice »
+8:00   LA PHRASE AMBIGUË, à placer exprès
+         « oui pour la formation, enfin faudra qu'on en reparle au budget »
+         ← elle ressemble à une décision, elle n'en est pas une
+11:00  Trois ACTIONS, dont une sans échéance et une sans propriétaire
+13:00  Un passage PERSONNEL, à ne pas recopier dans le compte rendu
+         un participant évoque un arrêt de travail
+15:00  Fin</div>
+<h5>Ce qui est volontairement dans l'enregistrement</h5>
+<ul>
+<li><b>La phrase ambiguë</b> de 8:00 porte la leçon 5. Sans elle, la leçon n'a rien à montrer.</li>
+<li><b>Le passage personnel</b> de 13:00 porte la leçon 7. Il permet de montrer concrètement ce qu'on ne recopie pas.</li>
+</ul>
+<p style="margin-top:10px"><b>Le traitement peut prendre jusqu'à 30 minutes.</b> Lancer, couper la caméra, reprendre sur le résultat, et le dire à l'apprenant plutôt que de masquer la coupe.</p>
+</div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">1</span><span class="lesson-t">À quoi sert Leexi, et ce que ça coûte</span><span class="dur">7 min</span></div>
+        <p class="hook">« Prendre des notes ou écouter : il faut choisir. Sauf si quelqu'un note pour toi. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Transcription et analyse de réunion. Annoncer le cadre exactement : <b>7 jours d'essai gratuit sur toute la suite Leexi One</b>, puis un abonnement à partir de 12 $ par licence et par mois en annuel, sans palier gratuit permanent. Donner la consigne pratique qui va avec : ouvrir l'essai le jour où on attaque la capsule, et enchaîner les sept leçons dans la foulée pour avoir tout essayé avant la fin de la semaine.</dd>
+          <dt>Ressources</dt><dd>Page de tarifs ouverte, à la date du tournage.</dd>
+          <dt>Démo</dt><dd>Montrer une transcription finie, puis le parcours d'ouverture de l'essai, pour que l'apprenant sache exactement par où commencer.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'interface complète. On montre une transcription finie et le parcours d'ouverture de l'essai.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">2</span><span class="lesson-t">Informer, pas faire signer</span><span class="dur">6 min</span></div>
+        <p class="hook">« On ne demande pas une autorisation. On informe, et on accepte qu'on puisse dire non. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Corriger tout de suite une idée fausse très répandue : enregistrer un rendez-vous professionnel ne repose pas sur le <b>consentement</b> au sens du RGPD, mais sur l'<b>intérêt légitime</b>. La différence est concrète. Ce que ça impose : <b>informer avant</b> que l'enregistrement commence, dire pourquoi on enregistre et combien de temps on garde, <b>permettre de s'y opposer</b> sans avoir à se justifier, et <b>ne pas enregistrer systématiquement</b> — un enregistrement permanent de tous les échanges est disproportionné. La durée de conservation attendue est <b>courte</b> : la CNIL fixe <b>six mois au maximum</b> pour ce type d'enregistrement, et recommande en pratique bien moins — on relit sous quelques jours, on rédige l'analyse, on supprime l'enregistrement. Six mois est donc un plafond, pas une norme à viser. Les réglages par défaut des outils, eux, se comptent en années. Donner la phrase exacte à dire en ouverture de rendez-vous, et ce qu'on fait quand quelqu'un refuse : on coupe, on prend des notes, et on ne le reproche à personne.</dd>
+          <dt>Ressources</dt><dd>La phrase d'information écrite, et la page de la CNIL sur l'enregistrement des conversations ouverte pour la citer correctement.</dd>
+          <dt>Démo</dt><dd>Aucune construction. Vidéo parlée, face caméra. C'est volontairement une leçon sans écran — mais lire la phrase d'information à voix haute, en conditions réelles.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'écran. C'est volontairement une leçon face caméra : le sujet est ce qu'on dit en ouverture de rendez-vous, pas où on clique.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Ne pas dire « il faut le consentement des participants ». C'est juridiquement faux et ça met le consultant dans une position intenable : si le consentement était la base, un refus annulerait tout traitement rétroactivement. Informer et permettre l'opposition, c'est autre chose — et c'est ce qui s'applique.</div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — exploiter un rendez-vous</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">3</span><span class="lesson-t">Capter le rendez-vous</span><span class="dur">6 min</span></div>
+        <p class="hook">« Un bot qui rejoint la visio, ou un enregistrement qu'on dépose. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Les <b>trois</b> façons d'alimenter Leexi : le bot qui rejoint la visioconférence depuis l'agenda, l'enregistrement en présentiel lancé depuis le web ou le mobile, et l'import d'un fichier audio ou vidéo déjà enregistré. Laquelle choisir selon le contexte — le présentiel compte autant que la visio pour un consultant. Et le point à relier à la leçon 2 : Leexi peut envoyer automatiquement un <b>e-mail d'information RGPD une heure avant la réunion</b>, mais ce réglage ne couvre <b>par défaut que les réunions qu'on organise soi-même</b>. Montrer où on l'étend, et rappeler qu'il ne dispense pas de le dire de vive voix.</dd>
+          <dt>Ressources</dt><dd>Un enregistrement de rendez-vous fictif de 15 minutes, joué à l'avance, avec deux voix. Et un rendez-vous de test dans l'agenda pour montrer le bot.</dd>
+          <dt>Démo</dt><dd>Montrer les trois entrées, puis déposer l'enregistrement et lancer le traitement.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'attente du traitement en direct, qui peut durer trente minutes. On lance, on coupe, on reprend sur le résultat en le disant.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Le traitement peut prendre jusqu'à 30 minutes. Ne pas filmer l'attente en direct : lancer, couper, et reprendre sur le résultat en le disant à l'apprenant.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Lire la transcription</span><span class="dur">7 min</span></div>
+        <p class="hook">« Ce n'est pas un texte à lire en entier. C'est un texte dans lequel on cherche. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Naviguer dans la transcription, retrouver un moment précis, vérifier qui a dit quoi.</dd>
+          <dt>Ressources</dt><dd>La transcription de la leçon précédente.</dd>
+          <dt>Démo</dt><dd>Chercher un terme, sauter au moment correspondant, écouter l'extrait.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">La lecture intégrale de la transcription. On cherche un terme, on saute au moment, on écoute l'extrait.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">Sortir les décisions et les actions</span><span class="dur">8 min</span></div>
+        <p class="hook">« Ce qui a été décidé, et ce qui a seulement été évoqué. Ce n'est pas pareil. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Le résumé généré, et le tri qu'il faut faire derrière. Une intention n'est pas une décision.</dd>
+          <dt>Ressources</dt><dd>L'enregistrement contient volontairement une phrase ambiguë, placée exprès.</dd>
+          <dt>Démo</dt><dd>Montrer le résumé, puis corriger le point ambigu en remontant à la transcription.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les analyses commerciales et les scores de conversation. On trie décisions et intentions, c'est la seule chose qui compte ici.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Préparer vraiment la phrase ambiguë dans l'enregistrement. C'est la leçon la plus utile du chapitre.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">Le compte rendu à envoyer</span><span class="dur">7 min</span></div>
+        <p class="hook">« Envoyé dans l'heure, ça vaut dix relances. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Construire le compte rendu : décisions, actions avec qui et pour quand, points en suspens. Le relire avant envoi, toujours.</dd>
+          <dt>Ressources</dt><dd>Modèle de compte rendu.</dd>
+          <dt>Démo</dt><dd>Générer, corriger deux points à l'écran, préparer le mail en brouillon.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'envoi du compte rendu. Il reste en brouillon, relu à l'écran.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Limites et checklist</span><span class="dur">6 min</span></div>
+        <p class="hook">« Un enregistrement de rendez-vous, c'est une donnée sensible. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Qui a accès aux enregistrements, et surtout l'écart qu'il faut nommer : les <b>durées de conservation par défaut de l'outil se comptent en années</b> — deux ans sur les plans courants — là où la leçon 2 a posé un plafond de six mois, et une recommandation de suppression bien plus rapide. Le réglage automatique de ces durées passe par l'option payante « Gouvernance », que l'apprenant n'aura pas sur son essai. La conséquence pratique, et c'est elle qu'on enseigne : <b>la suppression se fait à la main, et elle entre dans la routine de fin de dossier</b> — le compte rendu est rangé, l'enregistrement est supprimé. Finir par ce qu'on fait des passages personnels entendus en réunion : ce qui est sensible ne se recopie pas dans le compte rendu.</dd>
+          <dt>Ressources</dt><dd>Un enregistrement de test terminé, et les réglages du compte ouverts.</dd>
+          <dt>Démo</dt><dd>Montrer où se lit la durée de conservation par défaut, puis <b>supprimer un enregistrement à la main de bout en bout</b>, et dérouler la checklist.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Le réglage de purge automatique, qui demande une option payante que l'apprenant n'a pas. On montre la suppression à la main, celle qu'il refera.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Ne pas filmer un réglage de purge automatique si le compte de tournage y a accès : l'apprenant, lui, ne l'aura pas. Montrer le geste manuel, c'est celui qu'il refera.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOVABLE ============ -->
+  <section class="tool" id="lovable">
+    <div class="tool-head">
+      <div class="tool-num">Outil 8 · Développement et code</div>
+      <h2>Lovable</h2>
+      <p class="tool-sub">Montrer plutôt que décrire. Le prototype qu'on sort en une heure pour faire réagir le client.</p>
+      <div class="chips"><span class="chip">10 leçons · 1 h 13</span></div>
+    </div>
+
+    <div class="alert warn"><b>Le gratuit tient en un chiffre, et il cadre tout le chapitre.</b> <b>5 crédits par jour, 30 par mois</b>, plus 20 crédits Cloud et 4 crédits IA. Et le coût d'une demande <b>varie avec sa complexité</b> : environ un demi-crédit pour changer une couleur, plus d'un crédit pour ajouter une authentification, deux pour une page complète. L'apprenant ne construira donc pas le prototype complet en une séance : il faut le lui dire dès la leçon 3, et découper le cas pratique en séances courtes plutôt que de lui laisser croire qu'il refera la démonstration d'une traite. C'est aussi pour cette raison que la leçon 6 insiste sur « une consigne à la fois » : chaque essai raté coûte un cinquième de la journée.</div>
+
+    <div class="filrouge">
+      <h3>Le fil rouge</h3>
+      <p>Un client de l'apprenant n'arrive pas à exprimer son besoin. Au lieu d'un cahier des charges de douze pages, on lui construit un prototype cliquable et on le laisse réagir dessus.</p>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 1</em><h3>Les bases</h3></div>
+
+    <div class="plateau">
+<h4>Préparer le plateau <span class="mins">50 min de préparation</span></h4>
+<h5>Comptes à ouvrir</h5>
+<ul>
+<li>Un compte Lovable gratuit <b>neuf</b>. Rappel du budget réel : <b>5 crédits par jour, 30 par mois</b>, et le coût d'une demande varie selon ce qu'elle fait construire.</li>
+<li>Page à garder ouverte : <a href="https://lovable.dev/pricing">lovable.dev/pricing</a>, pour la leçon 3.</li>
+<li>Un <b>navigateur en fenêtre privée</b>, non connecté, prêt sur un second écran. Il sert à la leçon 8, et c'est la seule démonstration qui prouve que le lien publié est ouvert à tous.</li>
+</ul>
+<h5>Budget de crédits, à planifier avant de tourner</h5>
+<div class="data">Le coût d'une demande VARIE selon sa complexité. Ordres de grandeur
+publiés par l'éditeur : ~0,5 crédit pour une couleur, ~0,9 pour retirer
+un bloc, ~1,2 pour ajouter l'authentification, ~2 pour une page complète.
+
+Leçon 5   ~2 à 3 crédits   la première demande, et son résultat raté qu'on garde
+Leçon 6   ~2 à 3 crédits   trois corrections successives, une à la fois
+Leçon 7   ~1 à 2 crédits   l'injection du jeu de données
+Leçon 8   0                publier et partager ne consomment rien
+Leçon 10  0                les scans de sécurité sont gratuits
+
+→ 6 à 8 crédits pour le chapitre, pour 5 par jour sur le gratuit.
+  Prévoir DEUX journées de tournage, ou un compte payant.
+  Le dire à l'apprenant : lui non plus ne fera pas tout d'une traite.
+  Et vérifier le compteur à l'écran plutôt que d'annoncer un coût.</div>
+<h5>Ce qu'il faut préparer côté contenu</h5>
+<ul>
+<li><b>Le verbatim du client</b>, une seule phrase vague, affichée telle quelle en leçon 4. C'est le flou qui justifie le prototype.</li>
+<li><b>Un jeu de données crédible</b> pour la leçon 7 : des noms et des lieux plausibles, des durées irrégulières, une ligne en cours sans durée. Jamais de données clients réelles, et jamais de « Jean Dupont / test1 », qui tue la démonstration.</li>
+<li><b>Trois retours du client</b>, écrits avant la leçon 9, dont un qui <b>contredit</b> ce qu'on avait construit. C'est ce retour-là qui montre la valeur du prototype, et c'est ce qu'on facture.</li>
+</ul>
+</div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 2</em><h3>Le cas pratique — le prototype qui fait parler le client</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">4</span><span class="lesson-t">Le point de départ</span><span class="dur">6 min</span></div>
+        <p class="hook">« Le client dit : je veux un truc pour suivre mes interventions. Point. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Poser le besoin flou tel qu'il arrive. Montrer pourquoi un cahier des charges écrit à ce stade serait faux.</dd>
+          <dt>Ressources</dt><dd>Le verbatim du client, écrit sur une slide.</dd>
+          <dt>Démo</dt><dd>Aucune. Poser le problème.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Lovable. On pose le verbatim du client et on montre pourquoi un cahier des charges écrit maintenant serait faux.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">5</span><span class="lesson-t">La première description</span><span class="dur">8 min</span></div>
+        <p class="hook">« On décrit en français ce qu'on veut voir. Rien de plus. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Écrire la première demande. Ce qu'il faut préciser dès le départ : à qui ça sert, les deux ou trois écrans attendus, ce qu'on ne veut pas.</dd>
+          <dt>Ressources</dt><dd>Compte neuf, projet vide.</dd>
+          <dt>Démo</dt><dd>Écrire la demande, lancer, montrer le premier résultat — défauts compris.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Le résultat réussi du premier coup. On garde le premier résultat raté au montage, c'est ce que l'apprenant va vivre.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Ne pas couper le premier résultat raté au montage. C'est précisément ce que l'apprenant va vivre.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">6</span><span class="lesson-t">Corriger par petites touches</span><span class="dur">8 min</span></div>
+        <p class="hook">« Une demande, une modification. Trois d'un coup, et tu ne sais plus ce qui a cassé. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Itérer. Pourquoi une consigne à la fois — et chaque essai coûte un crédit sur les cinq de la journée. Puis le retour en arrière, avec sa limite qu'il faut absolument dire : <b>revenir à une version antérieure restaure le code, pas les données</b>. Ce qui a été saisi dans l'application entre-temps n'est pas rétabli. Donc on ne compte jamais sur l'historique pour rattraper une perte de données, et on ne laisse jamais un client saisir du vrai contenu dans un prototype qu'on va continuer à triturer.</dd>
+          <dt>Ressources</dt><dd>Le projet de la leçon précédente, avec deux ou trois enregistrements saisis à la main.</dd>
+          <dt>Démo</dt><dd>Trois corrections successives, puis un retour en arrière assumé à l'écran — et <b>montrer que les enregistrements saisis sont toujours là, ou plus là</b>, selon ce que fait l'outil le jour du tournage. C'est cette vérification qui fait la leçon.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les modifications du code à la main. On reste sur les demandes en français, une à la fois.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">7</span><span class="lesson-t">Brancher de vraies données</span><span class="dur">9 min</span></div>
+        <p class="hook">« Avec des données réalistes, le client arrête de regarder les couleurs et commence à parler de son métier. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Depuis la mise en place de <b>Lovable Cloud</b>, la base de données et l'authentification sont intégrées et activées par défaut quand le projet en a besoin : il n'y a plus de branchement manuel d'un service tiers à faire pour un prototype. Le dire clairement, parce que la plupart des tutoriels en ligne montrent encore l'ancienne méthode et perdent l'apprenant. Puis le geste utile : injecter un jeu de données crédible. Pourquoi « Jean Dupont / test1 » tue la démonstration — le client regarde les couleurs au lieu de parler de son métier.</dd>
+          <dt>Ressources</dt><dd>Un jeu de données réaliste préparé, et <b>aucune donnée client réelle</b>.</dd>
+          <dt>Démo</dt><dd>Montrer où vivent les données du projet, injecter le jeu de données, et montrer la différence de perception à l'écran.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Les données réelles d'un client, jamais. Et pas de configuration manuelle d'un service tiers : la base est intégrée.</dd>
+        </dl>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">8</span><span class="lesson-t">Partager pour faire réagir</span><span class="dur">7 min</span></div>
+        <p class="hook">« Le but n'est pas qu'il valide. Le but est qu'il dise non à quelque chose. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Publier le prototype, l'envoyer au client, et la façon de poser la question pour obtenir des retours utiles. <b>Et la chose à savoir avant de cliquer sur Publier :</b> sur les offres gratuite et intermédiaire, le lien publié est <b>public pour quiconque le possède</b> — il n'y a pas de protection par mot de passe, pas de restriction par adresse e-mail. Un lien transféré est un prototype ouvert. Conséquences pratiques : aucune donnée réelle dedans, on prévient le client que le lien ne se partage pas, et on dépublie quand la phase de retours est finie.</dd>
+          <dt>Ressources</dt><dd>Un modèle de message d'accompagnement, qui contient la phrase sur le partage du lien.</dd>
+          <dt>Démo</dt><dd>Publier, ouvrir le lien <b>dans une fenêtre privée, non connectée</b>, pour montrer qu'il s'ouvre sans rien demander. Puis montrer où l'on dépublie.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">L'envoi réel au client. On publie, on ouvre en fenêtre privée pour montrer que le lien est ouvert, et on dépublie.</dd>
+        </dl>
+        <div class="trap"><b>Le piège.</b> Ouvrir le lien depuis son propre navigateur connecté ne prouve rien. La fenêtre privée est la seule démonstration qui montre ce que voit un inconnu.</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">9</span><span class="lesson-t">Du prototype au cahier des charges</span><span class="dur">8 min</span></div>
+        <p class="hook">« Le prototype n'est pas le livrable. Le livrable, c'est ce qu'il t'a appris. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Transformer les réactions du client en spécification écrite. C'est ce qui fait la valeur de la prestation, et ce qu'on facture.</dd>
+          <dt>Ressources</dt><dd>Les retours du client, écrits à l'avance.</dd>
+          <dt>Démo</dt><dd>Rédiger la spécification à partir des retours, et la ranger dans la fiche client Notion.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Le développement de l'application finale. Le livrable de la leçon est la spécification écrite, pas le produit.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-head"><em>Partie 3</em><h3>Fiabiliser et livrer</h3></div>
+
+      <div class="lesson">
+        <div class="lesson-top"><span class="lesson-n">10</span><span class="lesson-t">Limites et checklist</span><span class="dur">8 min</span></div>
+        <p class="hook">« Le jour où le client dit : on le met en production comme ça. »</p>
+        <dl>
+          <dt>Contenu</dt><dd>Être précis plutôt que vague, sinon l'avertissement ne porte pas. Lovable propose bien une <b>revue de sécurité</b>, en deux temps : un balayage rapide, automatique à chaque publication, qui regarde les règles d'accès à la base et les dépendances vulnérables ; et une analyse approfondie, à lancer à la main, qui met trois à treize minutes et couvre le code — points d'entrée non protégés, secrets exposés. Les deux sont gratuites et ne consomment pas de crédits. On lance l'analyse approfondie, on lit ce qu'elle dit, et on la montre. Mais elle ne transforme pas un prototype en application de production — elle ne dit rien de la montée en charge, de la maintenance, ni du traitement des données personnelles. Le vrai risque à nommer est celui de la leçon 8 : <b>un lien public que personne ne surveille</b>. Puis ce qu'on écrit noir sur blanc dans la note de livraison : ce qui est couvert, ce qui ne l'est pas, et la date à laquelle le prototype sera dépublié. Et la règle qui ne bouge pas : jamais de données clients réelles dans un prototype.</dd>
+          <dt>Ressources</dt><dd>Modèle de note de livraison avec ses réserves, et le prototype construit.</dd>
+          <dt>Démo</dt><dd>Lancer la revue de sécurité à l'écran, lire un point signalé et le corriger. Puis dérouler la checklist et dépublier le prototype.</dd>
+          <dt class="hc">Hors champ</dt><dd class="hc">Un audit de sécurité complet. On lance la revue intégrée, on lit un point, on le corrige, et on dépublie.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="close">
+    <h2>Trois décisions à prendre avant de lancer le tournage</h2>
+    <p><b>Airtable.</b> Le rachat par Bending Spoons est acté depuis le 4 septembre. Tourner douze leçons dessus maintenant, c'est accepter de les refaire si la grille bouge. La décision D2 est toujours ouverte chez Juliann.</p>
+    <p><b>n8n, et c'est la décision la plus urgente.</b> L'installation par npm et npx n'est plus prise en charge à partir de la version 3.0, attendue en octobre 2026 : il faut tourner la leçon 4 sur <b>Docker</b>, sinon la vidéo est périmée le jour de sa publication. Reste aussi l'interface en anglais uniquement, à annoncer franchement dès la leçon 1.</p>
+    <p><b>Notion.</b> Les agents personnalisés sont réservés aux plans Business et Enterprise, pas disponibles sur le gratuit. Soit on tourne la leçon 10 avec un compte Business de démonstration en annonçant le plan à l'écran — c'est ce que prévoit le guide — soit on retire la partie agents et on s'en tient à l'assistant. À confirmer avant le tournage, parce que ça change les accès à prévoir pour le tournage.</p>
+    <p class="note-rev"><b>Deux blocages annoncés précédemment ont été levés par la vérification.</b> Leexi a bien un essai gratuit de 7 jours sur toute la suite, donc l'apprenant peut refaire la capsule. Et n8n propose un essai cloud gratuit de 14 jours plafonné à 1 000 exécutions : il n'y a pas besoin de payer pour suivre le chapitre.</p>
+  </div>
+
+  <div class="sign">Massylia Sahi · 8 octobre 2026 · Guide de tournage du parcours Focus outils. Version 9, après deux passes de vérification des huit chapitres contre les sources officielles de chaque éditeur, la dernière le 9 octobre 2026 : quotas des paliers gratuits, mécanismes réellement disponibles, et cadre juridique pour Leexi et Perplexity. Les corrections portent sur les agents Notion, l'essai gratuit de Leexi et de n8n, le déclencheur Gmail de Make, l'installation Docker de n8n, l'isolation client dans Softr, le partage de base dans Airtable, et la publication d'un prototype Lovable. Chaque page de tarifs reste à rouvrir le jour du tournage.</div>
+
+</div>
+
+</body></html>
